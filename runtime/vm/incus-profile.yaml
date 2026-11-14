@@ -1,0 +1,25 @@
+# Incus profile for the course VM. On a Linux host Incus is the best option:
+# it runs real VMs (and system containers with real systemd).
+#
+#   incus profile create linux-basics < runtime/vm/incus-profile.yaml
+#   incus launch images:ubuntu/24.04 bob-vm --vm --profile default --profile linux-basics
+#   for d in diska:1GiB diskb:1GiB diskc:2GiB; do
+#     incus storage volume create default "course-${d%%:*}" --type=block size="${d##*:}"
+#     incus config device add bob-vm "${d%%:*}" disk pool=default source="course-${d%%:*}"
+#   done
+#   incus restart bob-vm
+#   incus exec bob-vm -- env COURSE_ROLE=bob-vm bash /course/runtime/vm/provision.sh
+#
+# Incus exposes the volumes with serials containing "diska", "diskb", "diskc";
+# provision.sh recognises those names.
+description: Linux Basics course VM
+config:
+  limits.cpu: "2"
+  limits.memory: 2GiB
+  security.secureboot: "false"
+devices:
+  course:
+    type: disk
+    source: COURSE_REPO_PATH   # replace with the absolute path of this repository
+    path: /course
+    readonly: "true"

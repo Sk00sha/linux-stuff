@@ -1,0 +1,12 @@
+#cloud-config
+# Multipass equivalent of the Vagrant VM (modules 02 and 07; module 08 uses
+# loop-backed practice disks because Multipass cannot attach blank disks).
+#
+#   multipass launch 24.04 --name bob-vm --cpus 2 --memory 2G --disk 12G \
+#       --cloud-init runtime/vm/multipass-cloud-init.yaml
+#   multipass mount . bob-vm:/course
+#   multipass exec bob-vm -- sudo COURSE_ROLE=bob-vm bash /course/runtime/vm/provision.sh
+package_update: true
+packages: [python3, curl]
+runcmd:
+  - [bash, -c, "echo 'bob-vm provisioned by cloud-init; run provision.sh from /course' > /etc/motd"]

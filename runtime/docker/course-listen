@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+"""Tiny TCP listener used by course labs.
+
+Port 80/8080 answer with a minimal HTTP response; any other port sends a
+one-line banner and closes. Usage: course-listen PORT
+"""
+import socket
+import sys
+import threading
+
+port = int(sys.argv[1])
+host = socket.gethostname()
+
+
+def handle(conn):
+    with conn:
+        try:
+            conn.settimeout(2)
+            if port in (80, 8080):
+                try:
+                    conn.recv(1024)
+                except OSError:
+                    pass
+                body = f"hello from {host}:{port}\n".encode()
+                conn.sendall(b"HTTP/1.0 200 OK\r\nContent-Type: text/plain\r\n"
+                             + f"Content-Length: {len(body)}\r\n\r\n".encode() + body)
+            else:
+                conn.sendall(f"{host} service on port {port}\n".encode())
+        except OSError:
+            pass
+
+
+srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+srv.bind(("0.0.0.0", port))
+srv.listen(64)
+while True:
+    c, _ = srv.accept()
+    threading.Thread(target=handle, args=(c,), daemon=True).start()

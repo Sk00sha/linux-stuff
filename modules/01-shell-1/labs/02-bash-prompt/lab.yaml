@@ -1,0 +1,13 @@
+id: 01-shell-1/bash-prompt
+title: Configure Bob's shell to the team standard
+runtime: docker
+services: [ubuntu]
+login: {service: ubuntu, user: bob}
+minutes: 15
+tasks:
+  - id: t1
+    text: "Make Bob's prompt '[\\u@\\h \\W]$ ' (it shows as [bob@ubuntu ~]$ ) in every new interactive shell, by configuring ~/.bashrc."
+  - id: t2
+    text: Add /opt/tools/bin to Bob's PATH persistently, without removing the existing directories, so that the team's mercury-status tool runs by name.
+  - id: t3
+    text: Create a persistent alias ll that runs ls with the -l option (for example ls -la).

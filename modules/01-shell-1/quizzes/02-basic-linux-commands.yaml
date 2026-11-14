@@ -1,0 +1,29 @@
+id: 01-shell-1/02-basic-linux-commands
+title: "Quiz: Basic Linux Commands"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which command creates the directory /tmp/a/b/c even if /tmp/a does not exist yet?
+    options: {a: mkdir /tmp/a/b/c, b: mkdir -p /tmp/a/b/c, c: touch /tmp/a/b/c, d: mkdir -r /tmp/a/b/c}
+    answer: b
+    explanation: -p (parents) creates every missing directory along the path and does not complain about ones that already exist. Plain mkdir fails when a parent is missing.
+  - id: q2
+    prompt: How do you rename the file report.txt to report-old.txt?
+    options: {a: rename report.txt report-old.txt, b: cp -r report.txt report-old.txt, c: mv report.txt report-old.txt, d: ln report.txt report-old.txt}
+    answer: c
+    explanation: On Linux moving and renaming are the same operation, done with mv. cp would leave the original in place; ln creates a link.
+  - id: q3
+    prompt: "cp docs backup fails with \"-r not specified; omitting directory 'docs'\". What is the fix?"
+    options: {a: Use cp -r docs backup, b: Use rm -r docs first, c: Use cp -f docs backup, d: Run it with sudo}
+    answer: a
+    explanation: cp only copies directories when asked to recurse with -r (or -a). -f just forces overwriting, and sudo does not change the rule.
+  - id: q4
+    prompt: Which command tells you that cd is a shell builtin rather than a program on disk?
+    options: {a: which cd, b: type cd, c: whatis cd, d: ls cd}
+    answer: b
+    explanation: type reports how Bash will interpret a name — builtin, alias, function or file. which only searches PATH for external programs.
+  - id: q5
+    prompt: You want to read a 2,000-line log file, scroll back and forth and search it. Which command fits best?
+    options: {a: cat, b: less, c: touch, d: more}
+    answer: b
+    explanation: less is a pager that scrolls in both directions and supports /search. cat dumps everything at once; more only scrolls forward.

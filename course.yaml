@@ -1,0 +1,21 @@
+# Single source of truth for the course structure. bin/course, SYLLABUS.md
+# and the tests are all driven by this file. Paths are relative to the repo root.
+title: Linux Basics — Hands-On
+version: 1.0.0
+modules:
+  - id: 01-shell-1
+    title: Working with Shell I
+    runtime: docker
+    items:
+      - {type: story,  path: modules/01-shell-1/00-story.md}
+      - {type: lesson, path: modules/01-shell-1/lessons/01-introduction-to-shell.md, minutes: 10}
+      - {type: quiz,   path: modules/01-shell-1/quizzes/01-introduction-to-shell.yaml}
+      - {type: lesson, path: modules/01-shell-1/lessons/02-basic-linux-commands.md, minutes: 15}
+      - {type: quiz,   path: modules/01-shell-1/quizzes/02-basic-linux-commands.yaml}
+      - {type: lesson, path: modules/01-shell-1/lessons/03-command-line-help.md, minutes: 10}
+      - {type: quiz,   path: modules/01-shell-1/quizzes/03-command-line-help.yaml}
+      - {type: lesson, path: modules/01-shell-1/lessons/04-lab-introduction.md, minutes: 5}
+      - {type: lab,    path: modules/01-shell-1/labs/01-working-with-the-shell}
+      - {type: lesson, path: modules/01-shell-1/lessons/05-bash-shell.md, minutes: 15}
+      - {type: quiz,   path: modules/01-shell-1/quizzes/05-bash-shell.yaml}
+      - {type: lab,    path: modules/01-shell-1/labs/02-bash-prompt}

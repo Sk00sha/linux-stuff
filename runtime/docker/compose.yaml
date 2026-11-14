@@ -1,0 +1,158 @@
+# Linux Basics — Hands-On: Docker runtime (Track A).
+# Every service is selected by a per-module profile; `bin/course start <lab>`
+# brings up only the services a lab needs. Everything carries the label
+# course=linux-basics and `make down` removes containers and volumes.
+name: linux-basics
+
+x-learner: &learner
+  image: lbc/ubuntu:1.0
+  labels: {course: linux-basics}
+  volumes: ["../..:/course:ro"]
+  stop_grace_period: 2s
+
+x-learner-build: &learner-build
+  context: .
+  dockerfile: images/ubuntu/Dockerfile
+
+x-systemd: &systemd
+  image: lbc/systemd-ubuntu:1.0
+  build: {context: ., dockerfile: images/systemd-ubuntu/Dockerfile}
+  labels: {course: linux-basics}
+  privileged: true
+  cgroup: host
+  tmpfs: [/run, /run/lock, /tmp]
+  stop_grace_period: 5s
+
+services:
+  # ---- modules 01, 03, 04 -------------------------------------------------
+  ubuntu:
+    <<: *learner
+    build: *learner-build
+    profiles: [m01, m03, m04]
+    container_name: lbc-ubuntu
+    hostname: ubuntu
+
+  rocky:
+    <<: *learner
+    image: lbc/rocky:1.0
+    build: {context: ., dockerfile: images/rocky/Dockerfile}
+    profiles: [m03]
+    container_name: lbc-rocky
+    hostname: rocky
+
+  # ---- module 05: networking ----------------------------------------------
+  client:
+    <<: *learner
+    profiles: [m05]
+    container_name: lbc-client
+    hostname: client
+    cap_add: [NET_ADMIN]
+    networks:
+      frontend: {ipv4_address: 10.10.1.10}
+
+  router:
+    <<: *learner
+    profiles: [m05]
+    container_name: lbc-router
+    hostname: router
+    cap_add: [NET_ADMIN]
+    sysctls: {net.ipv4.ip_forward: 1}
+    networks:
+      frontend: {ipv4_address: 10.10.1.254}
+      backend: {ipv4_address: 10.10.2.254}
+
+  dns:
+    image: lbc/dns:1.0
+    build: {context: ., dockerfile: images/dns/Dockerfile}
+    labels: {course: linux-basics}
+    profiles: [m05]
+    container_name: lbc-dns
+    hostname: dns
+    networks:
+      frontend: {ipv4_address: 10.10.1.53}
+
+  web01:
+    <<: *learner
+    profiles: [m05]
+    container_name: lbc-web01
+    hostname: web01
+    environment: {COURSE_WEBAPP: "1"}
+    networks:
+      frontend: {ipv4_address: 10.10.1.80}
+
+  # db01 is shared by module 05 (networking) and module 06 (iptables).
+  db01:
+    <<: *learner
+    profiles: [m05, m06]
+    container_name: lbc-db01
+    hostname: db01
+    cap_add: [NET_ADMIN]
+    environment:
+      COURSE_ROUTES: "10.10.1.0/24 via 10.10.2.254"
+      COURSE_LISTEN: "5432"
+    networks:
+      backend: {ipv4_address: 10.10.2.20}
+
+  # ---- module 06: security ------------------------------------------------
+  devbox:
+    <<: *learner
+    profiles: [m06]
+    container_name: lbc-devbox
+    hostname: devbox
+    cap_add: [NET_ADMIN]
+    networks:
+      backend: {ipv4_address: 10.10.2.10}
+
+  app01:
+    <<: *learner
+    profiles: [m06]
+    container_name: lbc-app01
+    hostname: app01
+    cap_add: [NET_ADMIN]
+    environment: {COURSE_LISTEN: "80 8080"}
+    networks:
+      backend: {ipv4_address: 10.10.2.30}
+
+  # ---- module 07 fallback: systemd in a container (Linux hosts only) -------
+  systemd:
+    <<: *systemd
+    profiles: [m07]
+    container_name: lbc-systemd
+    hostname: bob-systemd
+    volumes: ["../..:/course:ro"]
+
+  # ---- module 09: client demonstration ------------------------------------
+  demo-web:
+    <<: *systemd
+    profiles: [demo]
+    container_name: lbc-demo-web
+    hostname: demo-web
+    tmpfs: [/run, /run/lock, /tmp, "/var/lib/mercury:size=2m,mode=0755"]
+    volumes: ["../..:/course:ro"]
+    networks:
+      demo: {ipv4_address: 10.10.9.10}
+
+  demo-db:
+    image: postgres:16
+    labels: {course: linux-basics}
+    profiles: [demo]
+    container_name: lbc-demo-db
+    hostname: demo-db
+    environment:
+      POSTGRES_USER: mercury
+      POSTGRES_PASSWORD: m3rcury-demo
+      POSTGRES_DB: mercury
+    volumes: ["./demo-db-init.sql:/docker-entrypoint-initdb.d/init.sql:ro"]
+    networks:
+      demo: {ipv4_address: 10.10.9.20}
+
+networks:
+  frontend:
+    labels: {course: linux-basics}
+    ipam: {config: [{subnet: 10.10.1.0/24, gateway: 10.10.1.1}]}
+  backend:
+    labels: {course: linux-basics}
+    ipam: {config: [{subnet: 10.10.2.0/24, gateway: 10.10.2.1}]}
+  demo:
+    labels: {course: linux-basics}
+    ipam: {config: [{subnet: 10.10.9.0/24, gateway: 10.10.9.1}]}
