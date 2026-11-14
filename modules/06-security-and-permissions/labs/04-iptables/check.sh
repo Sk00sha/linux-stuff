@@ -38,7 +38,7 @@ check_t3() {
 }
 
 check_t4() {
-  [ "$(probe app01 $DB01 5432)" = open ] || { fail t4 "db01:5432 is not reachable from app01"; return; }
+  [ "$(probe app01 $DB01 5432)" = open ] || { fail t4 "db01:5432 is not reachable from app01 (if t3 also fails, app01 itself is dropping the replies)"; return; }
   [ "$(probe devbox $DB01 5432)" = closed ] || { fail t4 "db01:5432 is reachable from devbox; only app01 may connect"; return; }
   pass t4
 }
