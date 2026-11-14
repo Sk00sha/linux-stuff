@@ -1,0 +1,26 @@
+id: 09-client-demo/final-troubleshooting
+title: "Finale: save the client demonstration"
+runtime: docker
+services: [demo-web, demo-db]
+login: {service: demo-web, user: bob}
+minutes: 60
+hide_tasks: true
+tasks:
+  - id: t1
+    text: "End to end: curl http://demo-web/ returns 200 with the greeting from the database."
+  - id: t2
+    text: The web service runs the right program, is running and starts at boot.
+  - id: t3
+    text: The web service's environment lets it find its interpreter.
+  - id: t4
+    text: The application's configuration is readable by the service but not by everyone.
+  - id: t5
+    text: The application server resolves the database's name correctly.
+  - id: t6
+    text: Nothing on the application server blocks traffic to the database port.
+  - id: t7
+    text: The application's data directory has free space.
+  - id: t8
+    text: Nightly log rotation is scheduled again.
+  - id: t9
+    text: Every package the application needs is installed.

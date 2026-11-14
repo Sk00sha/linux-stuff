@@ -151,3 +151,14 @@ modules:
       - {type: lab,    path: modules/08-storage/labs/03-lvm}
       - {type: lab,    path: modules/08-storage/labs/04-nfs}
       - {type: lesson, path: modules/08-storage/lessons/07-project-status-meeting.md, minutes: 5}
+
+  - id: 09-client-demo
+    title: The Client Demonstration
+    runtime: docker
+    items:
+      - {type: story,  path: modules/09-client-demo/00-story.md}
+      - {type: lesson, path: modules/09-client-demo/lessons/01-client-demo-in-jeopardy.md, minutes: 5}
+      - {type: lesson, path: modules/09-client-demo/lessons/02-troubleshooting-playbook.md, minutes: 15}
+      - {type: quiz,   path: modules/09-client-demo/quizzes/02-troubleshooting-playbook.yaml}
+      - {type: lab,    path: modules/09-client-demo/labs/01-final-troubleshooting}
+      - {type: lesson, path: modules/09-client-demo/lessons/03-finale.md, minutes: 5}

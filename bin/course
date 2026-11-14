@@ -10,6 +10,7 @@ import json
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import textwrap
@@ -434,7 +435,9 @@ def cmd_start(args):
     if rc != 0:
         die("setup.sh failed (exit %d)" % rc, rc)
     print(green("Lab ready.") + " Tasks: %s" % os.path.relpath(os.path.join(item["abspath"], "README.md")))
-    for t in ctx["lab"].get("tasks", []):
+    if ctx["lab"].get("hide_tasks"):
+        print("  (symptoms only — read the README; `course check` reports health per area)")
+    for t in ([] if ctx["lab"].get("hide_tasks") else ctx["lab"].get("tasks", [])):
         print("  %s  %s" % (bold(t["id"]), textwrap.fill(t["text"], 72, subsequent_indent="      ")))
     if args.no_shell or not sys.stdin.isatty():
         return 0
@@ -669,4 +672,5 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
+    signal.signal(signal.SIGPIPE, signal.SIG_DFL)  # behave like a normal CLI in pipes
     sys.exit(main())

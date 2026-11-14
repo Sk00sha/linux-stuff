@@ -1,0 +1,29 @@
+id: 09-client-demo/02-troubleshooting-playbook
+title: "Quiz: A Troubleshooting Playbook"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: A service fails with status=203/EXEC. What is the most likely cause?
+    options: {a: "The disk is full", b: "ExecStart points to a file that doesn't exist or isn't executable", c: "DNS is broken", d: "The firewall blocks the port"}
+    answer: b
+    explanation: 203/EXEC means systemd could not execute the configured program.
+  - id: q2
+    prompt: How do you check whether the service user mercury can read /etc/mercury/app.conf?
+    options: {a: "cat /etc/mercury/app.conf as root", b: "sudo -u mercury cat /etc/mercury/app.conf", c: "chmod 777 /etc/mercury/app.conf", d: "systemctl cat mercury"}
+    answer: b
+    explanation: Running the command as the service user reproduces exactly what the service experiences.
+  - id: q3
+    prompt: The app reports "Connection timed out" to the database although the name resolves correctly. Where do you look next?
+    options: {a: "/etc/hosts", b: "Routing and firewall rules (e.g. iptables -L OUTPUT on the app server)", c: "The package cache", d: "The cron directory"}
+    answer: b
+    explanation: A timeout means packets get no answer — usually routing or a DROP rule. Refused would point at the service or a REJECT.
+  - id: q4
+    prompt: You find three problems at once. What's the best approach?
+    options: {a: "Fix all three, then test", b: "Fix one, verify, then move on to the next", c: "Reboot the server first", d: "Reinstall the application"}
+    answer: b
+    explanation: One change at a time tells you which fix mattered and avoids new problems hiding old ones.
+  - id: q5
+    prompt: "Writes fail with \"No space left on device\" but df -h shows free space. What else should you check?"
+    options: {a: "Inode usage with df -i", b: "The DNS server", c: "The kernel version", d: "The cron daemon"}
+    answer: a
+    explanation: A filesystem can run out of inodes (too many small files) while blocks remain free.

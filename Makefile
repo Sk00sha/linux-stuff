@@ -4,6 +4,8 @@ COURSE := ./bin/course
 COMPOSE := docker compose -f runtime/docker/compose.yaml --profile '*'
 VM_TOOL ?= vagrant
 ID ?=
+SEED ?=
+export SEED
 TASK ?=
 # images to build in `make setup` (rocky needs access to the Rocky mirrors)
 IMAGES ?= ubuntu rocky dns systemd

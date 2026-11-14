@@ -1,0 +1,17 @@
+[Unit]
+Description=Mercury demo web front end
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mercury
+Group=mercury
+ExecStart=/usr/local/bin/mercury-web
+Restart=on-failure
+RestartSec=3
+# allow binding to port 80 without running as root
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,2 @@
+# Rotate Mercury logs every night at 02:15
+15 2 * * * root /usr/local/bin/mercury-rotate

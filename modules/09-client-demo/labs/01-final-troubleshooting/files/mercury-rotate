@@ -1,0 +1,9 @@
+#!/bin/bash
+# Rotate Mercury's logs: keep 7 compressed generations.
+set -eu
+cd /var/log/mercury
+for f in *.log; do
+  [ -s "$f" ] || continue
+  for i in 6 5 4 3 2 1; do [ -f "$f.$i.gz" ] && mv "$f.$i.gz" "$f.$((i + 1)).gz"; done
+  cp "$f" "$f.1" && : > "$f" && gzip -f "$f.1"
+done
