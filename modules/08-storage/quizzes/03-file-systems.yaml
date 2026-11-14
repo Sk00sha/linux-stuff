@@ -1,0 +1,29 @@
+id: 08-storage/03-file-systems
+title: "Quiz: File Systems in Linux"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Why mount by UUID in /etc/fstab instead of /dev/sdb1?
+    options: {a: "UUIDs are faster", b: "Device names can change between boots; the filesystem's UUID does not", c: "fstab doesn't accept /dev names", d: "UUIDs encrypt the filesystem"}
+    answer: b
+    explanation: Detection order can change device names; the UUID is stored in the filesystem itself.
+  - id: q2
+    prompt: Which command creates an ext4 filesystem on /dev/sdb1?
+    options: {a: "mount -t ext4 /dev/sdb1", b: "sudo mkfs.ext4 /dev/sdb1", c: "sudo fdisk -t ext4 /dev/sdb1", d: "blkid -c ext4 /dev/sdb1"}
+    answer: b
+    explanation: mkfs.ext4 (or mkfs -t ext4) creates the filesystem — and erases what was on the partition.
+  - id: q3
+    prompt: In the fstab line "UUID=... /mnt/data ext4 defaults 0 2", what does the final 2 mean?
+    options: {a: "Mount it second", b: "fsck checks it at boot after the root filesystem", c: "Two copies are kept", d: "It's mounted read-only"}
+    answer: b
+    explanation: The sixth field is the fsck pass number: 1 for /, 2 for others, 0 to skip.
+  - id: q4
+    prompt: How do you test a new fstab entry without rebooting?
+    options: {a: "sudo findmnt --verify, then sudo mount -a", b: "sudo reboot -t", c: "cat /etc/fstab", d: "sudo mkfs -a"}
+    answer: a
+    explanation: findmnt --verify checks syntax and devices; mount -a mounts everything listed that isn't mounted yet.
+  - id: q5
+    prompt: Which filesystem can be grown but never shrunk?
+    options: {a: "ext4", b: "XFS", c: "ext2", d: "vfat"}
+    answer: b
+    explanation: XFS (the Rocky/RHEL default) supports online growth with xfs_growfs but has no shrink.

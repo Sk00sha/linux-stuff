@@ -1,0 +1,29 @@
+id: 08-storage/05-nfs
+title: "Quiz: The NFS Filesystem"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which file lists the directories an NFS server shares?
+    options: {a: "/etc/fstab", b: "/etc/exports", c: "/etc/nfs.conf.d/shares", d: "/var/lib/nfs/etab only"}
+    answer: b
+    explanation: Administrators edit /etc/exports; exportfs publishes it (the kernel's current state is in /var/lib/nfs/etab).
+  - id: q2
+    prompt: After editing /etc/exports, which command applies the changes?
+    options: {a: "sudo exportfs -arv", b: "sudo mount -a", c: "sudo showmount -e", d: "sudo nfs reload-all"}
+    answer: a
+    explanation: exportfs -a exports everything, -r re-syncs with the file, -v is verbose.
+  - id: q3
+    prompt: "What is wrong with the line: /srv/share client1 (rw)"
+    options: {a: "Nothing", b: "The space gives client1 default (read-only) access and everyone read-write", c: "rw must be uppercase", d: "Paths must be in quotes"}
+    answer: b
+    explanation: Options must touch the client name — client1(rw).
+  - id: q4
+    prompt: Which fstab options make an NFS mount wait for the network and not block boot if the server is down?
+    options: {a: "_netdev,nofail", b: "ro,sync", c: "noatime,defaults", d: "root_squash"}
+    answer: a
+    explanation: _netdev orders the mount after the network; nofail lets boot continue if it fails.
+  - id: q5
+    prompt: Files on an NFS share appear to belong to a different user than expected. What's the most likely cause?
+    options: {a: "The server is down", b: "The user has different UIDs on the server and the client", c: "The share is read-only", d: "The disk is full"}
+    answer: b
+    explanation: NFS identifies owners by numeric UID/GID; keep IDs consistent across machines.

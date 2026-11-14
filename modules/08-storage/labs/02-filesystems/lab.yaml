@@ -1,0 +1,15 @@
+id: 08-storage/filesystems
+title: A persistent data filesystem
+runtime: vm
+services: [bob-vm]
+login: {service: bob-vm, user: bob}
+minutes: 20
+tasks:
+  - id: t1
+    text: Create an ext4 filesystem on the 500 MiB partition of disk-a.
+  - id: t2
+    text: Mount it at /mnt/data.
+  - id: t3
+    text: Add an /etc/fstab entry that mounts it at /mnt/data at boot, identifying it by UUID.
+  - id: t4
+    text: The entry must be valid and reboot-safe — the grader unmounts /mnt/data and runs mount -a to prove it comes back.

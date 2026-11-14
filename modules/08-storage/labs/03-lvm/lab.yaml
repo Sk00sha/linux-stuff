@@ -1,0 +1,15 @@
+id: 08-storage/lvm
+title: A growable media volume with LVM
+runtime: vm
+services: [bob-vm]
+login: {service: bob-vm, user: bob}
+minutes: 25
+tasks:
+  - id: t1
+    text: Make practice disks disk-b and disk-c LVM physical volumes.
+  - id: t2
+    text: Create the volume group caleston_vg from both physical volumes.
+  - id: t3
+    text: Create a 1 GiB logical volume named data in caleston_vg, format it ext4 and mount it at /mnt/media.
+  - id: t4
+    text: Media is growing — extend the data volume by 500 MiB, together with its filesystem, while it stays mounted.

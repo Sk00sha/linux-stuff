@@ -1,0 +1,29 @@
+id: 08-storage/06-lvm
+title: "Quiz: LVM"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: What is the correct order to set up LVM on two new disks?
+    options: {a: "lvcreate, vgcreate, pvcreate", b: "pvcreate, vgcreate, lvcreate", c: "vgcreate, pvcreate, lvcreate", d: "mkfs, pvcreate, lvcreate"}
+    answer: b
+    explanation: Initialise the disks as PVs, pool them into a VG, then carve LVs out of the VG.
+  - id: q2
+    prompt: Which command grows the LV data by 500 MiB and its filesystem in one step?
+    options: {a: "lvextend -L 500M /dev/vg/data", b: "lvextend -L +500M -r /dev/vg/data", c: "vgextend +500M vg", d: "resize2fs -L +500M /dev/vg/data"}
+    answer: b
+    explanation: +500M adds to the size (500M alone sets it to 500 MiB) and -r resizes the filesystem too.
+  - id: q3
+    prompt: The volume group is full. How do you get more space for its LVs?
+    options: {a: "Add another PV with pvcreate and vgextend", b: "Run lvextend with -f", c: "Delete the VG", d: "Use mkfs on the VG"}
+    answer: a
+    explanation: A VG grows by adding physical volumes; then its LVs can be extended.
+  - id: q4
+    prompt: Which commands show compact summaries of PVs, VGs and LVs?
+    options: {a: "pvs, vgs, lvs", b: "lsmod, lspci, lsusb", c: "df, du, free", d: "pvdisplay -s only"}
+    answer: a
+    explanation: pvs, vgs and lvs give one line per object; the *display commands give detail.
+  - id: q5
+    prompt: You ran lvextend -L +1G without -r on an ext4 volume. df still shows the old size. What fixes it?
+    options: {a: "sudo resize2fs /dev/vg/data", b: "Reboot", c: "sudo mkfs.ext4 /dev/vg/data", d: "sudo vgextend vg"}
+    answer: a
+    explanation: The LV grew but the filesystem didn't. resize2fs (ext4) or xfs_growfs (XFS) grows it online. mkfs would erase it.

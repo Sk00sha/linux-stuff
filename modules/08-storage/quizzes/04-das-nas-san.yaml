@@ -1,0 +1,29 @@
+id: 08-storage/04-das-nas-san
+title: "Quiz: DAS, NAS and SAN"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which kind of storage delivers files and directories over the network to many clients?
+    options: {a: "DAS", b: "NAS", c: "SAN", d: "RAID"}
+    answer: b
+    explanation: A NAS is a file server (NFS, SMB). DAS and SAN deliver block devices.
+  - id: q2
+    prompt: A SAN volume is attached to a Linux server. How does it look on the server?
+    options: {a: "A directory under /mnt with files already in it", b: "A block device like /dev/sdc that you partition and format", c: "A URL", d: "An NFS export"}
+    answer: b
+    explanation: SANs provide block storage; the server sees another disk.
+  - id: q3
+    prompt: Which protocol is typically used by a Linux NAS?
+    options: {a: "NFS", b: "Fibre Channel", c: "SATA", d: "iSCSI"}
+    answer: a
+    explanation: NFS is the Unix/Linux file-sharing protocol; SMB/CIFS is common with Windows. iSCSI and Fibre Channel are SAN protocols.
+  - id: q4
+    prompt: Why is mounting one ext4 SAN volume read-write on two servers at once dangerous?
+    options: {a: "It's slow", b: "ext4 isn't designed for two writers; each server corrupts the other's view", c: "SANs only allow read-only mounts", d: "It is not dangerous"}
+    answer: b
+    explanation: Ordinary filesystems assume a single host; sharing needs NAS or a cluster filesystem.
+  - id: q5
+    prompt: Which is an example of direct-attached storage?
+    options: {a: "An NVMe SSD inside the server", b: "An NFS share", c: "An S3 bucket", d: "An iSCSI target on another rack"}
+    answer: a
+    explanation: DAS is attached directly to one host — internal disks, or external disks cabled to it.

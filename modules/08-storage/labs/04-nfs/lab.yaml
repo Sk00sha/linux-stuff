@@ -1,0 +1,15 @@
+id: 08-storage/nfs
+title: "Optional: share reports over NFS"
+runtime: vm
+services: [bob-vm, nfs-server]
+login: {service: bob-vm, user: bob}
+minutes: 25
+tasks:
+  - id: t1
+    text: On nfs-server, export /srv/share read-write to bob-vm (192.168.56.10).
+  - id: t2
+    text: On bob-vm, mount nfs-server:/srv/share at /mnt/share.
+  - id: t3
+    text: Make the mount persistent on bob-vm with an /etc/fstab entry that waits for the network (_netdev).
+  - id: t4
+    text: As bob on bob-vm, create the file /mnt/share/hello-from-bob.txt; it must appear on nfs-server owned by bob.

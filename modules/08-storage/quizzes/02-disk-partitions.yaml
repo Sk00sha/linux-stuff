@@ -1,0 +1,29 @@
+id: 08-storage/02-disk-partitions
+title: "Quiz: Disk Partitions"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Why choose GPT over MBR for a new 4 TB disk?
+    options: {a: "MBR cannot address disks larger than 2 TiB", b: "GPT is faster", c: "MBR only works with XFS", d: "GPT doesn't need a partition table"}
+    answer: a
+    explanation: MBR is limited to 2 TiB and four primary partitions; GPT supports huge disks, 128 partitions and keeps a backup table.
+  - id: q2
+    prompt: What is the first partition on the NVMe disk /dev/nvme0n1 called?
+    options: {a: "/dev/nvme0n11", b: "/dev/nvme0n1p1", c: "/dev/nvme1", d: "/dev/sda1"}
+    answer: b
+    explanation: Device names ending in a digit get a p before the partition number.
+  - id: q3
+    prompt: You typed n, created a partition and then q in gdisk. What happened to the disk?
+    options: {a: "The partition was created", b: "Nothing; changes are only written with w", c: "The disk was wiped", d: "The partition table was converted to MBR"}
+    answer: b
+    explanation: Interactive partition editors keep changes in memory until you write them.
+  - id: q4
+    prompt: Which command lists block devices as a tree with sizes and mount points?
+    options: {a: "lsblk", b: "blkid -t", c: "df -i", d: "mount -l"}
+    answer: a
+    explanation: lsblk shows disks, partitions and LVs as a tree; -f adds filesystem information.
+  - id: q5
+    prompt: Which tool is the scriptable, non-interactive counterpart of gdisk?
+    options: {a: "sgdisk", b: "mkfs", c: "fsck", d: "partx -i"}
+    answer: a
+    explanation: sgdisk takes options on the command line, e.g. sgdisk -n 1:0:+500M /dev/sdb. parted -s is another option.

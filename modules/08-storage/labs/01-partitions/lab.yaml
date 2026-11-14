@@ -1,0 +1,15 @@
+id: 08-storage/partitions
+title: Partition the first new disk
+runtime: vm
+services: [bob-vm]
+login: {service: bob-vm, user: bob}
+minutes: 20
+tasks:
+  - id: t1
+    text: Create a GPT partition table on practice disk disk-a (find its device with course-disk disk-a).
+  - id: t2
+    text: Create exactly one partition of 500 MiB on disk-a.
+  - id: t3
+    text: The partition's type must be "Linux filesystem" (gdisk code 8300).
+  - id: t4
+    text: Write the partition's device path (for example /dev/sdb1) into /home/bob/partition.txt.

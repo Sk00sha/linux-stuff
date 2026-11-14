@@ -129,3 +129,25 @@ modules:
       - {type: lesson, path: modules/07-systemd/lessons/03-systemd-tools.md, minutes: 20}
       - {type: quiz,   path: modules/07-systemd/quizzes/03-systemd-tools.yaml}
       - {type: lab,    path: modules/07-systemd/labs/01-systemd-services}
+
+  - id: 08-storage
+    title: Storage in Linux
+    runtime: vm
+    items:
+      - {type: story,  path: modules/08-storage/00-story.md}
+      - {type: lesson, path: modules/08-storage/lessons/01-where-is-my-storage.md, minutes: 5}
+      - {type: lesson, path: modules/08-storage/lessons/02-disk-partitions.md, minutes: 20}
+      - {type: quiz,   path: modules/08-storage/quizzes/02-disk-partitions.yaml}
+      - {type: lab,    path: modules/08-storage/labs/01-partitions}
+      - {type: lesson, path: modules/08-storage/lessons/03-file-systems.md, minutes: 20}
+      - {type: quiz,   path: modules/08-storage/quizzes/03-file-systems.yaml}
+      - {type: lab,    path: modules/08-storage/labs/02-filesystems}
+      - {type: lesson, path: modules/08-storage/lessons/04-das-nas-san.md, minutes: 10}
+      - {type: quiz,   path: modules/08-storage/quizzes/04-das-nas-san.yaml}
+      - {type: lesson, path: modules/08-storage/lessons/05-nfs.md, minutes: 15}
+      - {type: quiz,   path: modules/08-storage/quizzes/05-nfs.yaml}
+      - {type: lesson, path: modules/08-storage/lessons/06-lvm.md, minutes: 25}
+      - {type: quiz,   path: modules/08-storage/quizzes/06-lvm.yaml}
+      - {type: lab,    path: modules/08-storage/labs/03-lvm}
+      - {type: lab,    path: modules/08-storage/labs/04-nfs}
+      - {type: lesson, path: modules/08-storage/lessons/07-project-status-meeting.md, minutes: 5}
