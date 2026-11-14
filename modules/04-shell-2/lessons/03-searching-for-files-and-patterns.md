@@ -1,7 +1,7 @@
 ---
 id: 04-shell-2/03-searching-for-files-and-patterns
 title: Searching for Files and Patterns
-minutes: 20
+minutes: 13
 objectives:
   - Find files by name with locate and by properties with find
   - Run a command on every file find returns
@@ -69,7 +69,7 @@ Actions:
 | `-c` | count matching lines |
 | `-l` | list only file names that contain a match |
 | `-A N` / `-B N` / `-C N` | also show N lines **a**fter / **b**efore / around |
-| `-E` | extended regular expressions (`a|b`, `+`, `?`, `()`) |
+| `-E` | extended regular expressions (`a\|b`, `+`, `?`, `()`) |
 
 ### A little regular expression
 
@@ -80,7 +80,7 @@ Actions:
 | `.` | any one character |
 | `[0-9]` | one digit |
 | `x*` | zero or more `x` |
-| `(warn|error)` with `-E` | either word |
+| `(warn\|error)` with `-E` | either word |
 
 Quote patterns with single quotes so the shell doesn't interpret `*`, `$` or
 `|` itself.

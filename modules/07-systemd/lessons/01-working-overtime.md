@@ -1,11 +1,12 @@
 ---
 id: 07-systemd/01-working-overtime
 title: "Working Overtime: Why Services Need a Manager"
-minutes: 5
+minutes: 6
 objectives:
   - Explain what a service manager does that nohup and & don't
   - Name the main kinds of systemd units
 prerequisites: [02-linux-core-concepts/05-runlevels]
+quiz: false
 tryit: systemd
 ---
 
@@ -83,6 +84,7 @@ Sun 2026-11-15 00:00:00 UTC 3h 5min -         - dpkg-db-backup.timer         dpk
 
 - A service manager starts, restarts, sequences, isolates and logs services.
 - systemd units: `.service`, `.target`, `.timer`, `.socket`, `.mount`…
+- `systemctl` controls units; the journal collects their logs.
 
 ## Next
 

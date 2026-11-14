@@ -1,11 +1,12 @@
 ---
 id: 03-package-management/04-apt-vs-apt-get
 title: APT vs APT-GET
-minutes: 5
+minutes: 8
 objectives:
   - Explain the difference between apt and apt-get/apt-cache
   - Choose the right one for interactive use and for scripts
 prerequisites: [03-package-management/03-dpkg-and-apt]
+short: true  # spec: no quiz or 3 questions
 tryit: ubuntu
 ---
 

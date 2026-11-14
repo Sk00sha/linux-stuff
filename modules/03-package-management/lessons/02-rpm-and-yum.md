@@ -1,7 +1,7 @@
 ---
 id: 03-package-management/02-rpm-and-yum
 title: RPM and YUM/DNF
-minutes: 20
+minutes: 11
 objectives:
   - Install, upgrade, query and remove packages with rpm
   - Use dnf/yum to install from repositories with dependency resolution

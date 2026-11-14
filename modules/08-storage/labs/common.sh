@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Shared code for module 08 labs. STORAGE_FUNCS is prepended to scripts that
 # run *inside the course VM*; nothing here ever touches the host's disks.
-# shellcheck disable=SC2016
+# shellcheck disable=SC2016,SC2034  # used by the labs that source this file
 STORAGE_FUNCS='
 disk() { course-disk "$1"; }
 # first partition of a disk (handles sdb1, vdb1, nvme1n1p1, loop0p1)

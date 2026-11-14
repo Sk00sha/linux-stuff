@@ -61,7 +61,7 @@ assert_owner() { # svc path user:group
 assert_mode() { # svc path octal-mode (e.g. 750 or 1777)
   local got want
   got=$(run_on "$1" "stat -c %a $(_q "$2")" 2>/dev/null)
-  want=$(echo "$3" | sed 's/^0*\([0-9]\)/\1/')
+  want=$((10#$3)); want=$(printf '%o' "$((8#$want))")   # strip leading zeros
   [ "$got" = "$want" ] && return 0
   REASON="$2 on $1 has mode ${got:-<missing>}, expected $3"; return 1
 }

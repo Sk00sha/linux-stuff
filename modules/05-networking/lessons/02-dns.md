@@ -1,7 +1,7 @@
 ---
 id: 05-networking/02-dns
 title: DNS and Name Resolution
-minutes: 20
+minutes: 12
 objectives:
   - Explain how Linux turns a host name into an IP address
   - Use /etc/hosts, /etc/resolv.conf and /etc/nsswitch.conf

@@ -1,7 +1,7 @@
 ---
 id: 03-package-management/03-dpkg-and-apt
 title: DPKG and APT
-minutes: 20
+minutes: 10
 objectives:
   - Install, list and remove .deb packages with dpkg
   - Use apt to install from repositories and fix broken dependencies

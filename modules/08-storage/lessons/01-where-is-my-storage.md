@@ -5,6 +5,7 @@ minutes: 5
 objectives:
   - Describe the layers between a raw disk and a usable directory
 prerequisites: [02-linux-core-concepts/08-filesystem-hierarchy]
+quiz: false
 tryit: vm
 ---
 
@@ -83,6 +84,7 @@ Filesystem                         Size  Used Avail Use% Mounted on
 
 - Disk → partition → (LVM) → filesystem → mount point → files.
 - Identify the device twice before any destructive command.
+- On the course VM, `course-disk` names the practice disks for you.
 
 ## Next
 

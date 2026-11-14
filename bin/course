@@ -98,7 +98,7 @@ class Course:
     def _enrich(self, item):
         t = item["type"]
         p = item["abspath"]
-        item.setdefault("minutes", {"story": 2, "quiz": 5}.get(t, 10))
+        item.setdefault("minutes", {"story": 2, "quiz": 3}.get(t, 10))
         try:
             if t in ("lesson", "story"):
                 fm, _ = front_matter(p)

@@ -55,11 +55,11 @@ check_t5() {
 }
 
 check_t6() {
-  local before after i
+  local before after
   [ "$(run_on "$H" "systemctl is-active $U")" = active ] || { fail t6 "service is not running, nothing to test"; return; }
   before=$(prop MainPID)
   run_on "$H" "kill -9 $before"
-  for i in $(seq 1 20); do
+  for _ in $(seq 1 20); do
     sleep 1
     after=$(prop MainPID)
     if [ "$(run_on "$H" "systemctl is-active $U")" = active ] && [ "$after" != 0 ] && [ "$after" != "$before" ]; then

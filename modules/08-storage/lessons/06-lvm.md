@@ -1,7 +1,7 @@
 ---
 id: 08-storage/06-lvm
 title: LVM — Logical Volume Manager
-minutes: 25
+minutes: 11
 objectives:
   - Explain physical volumes, volume groups and logical volumes
   - Build a volume group from several disks and carve logical volumes

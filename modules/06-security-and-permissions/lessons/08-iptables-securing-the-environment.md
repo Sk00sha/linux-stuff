@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/08-iptables-securing-the-environment
 title: "IPTABLES: Securing the Environment"
-minutes: 20
+minutes: 11
 objectives:
   - Design a default-deny inbound policy for a server
   - Allow return traffic with connection tracking

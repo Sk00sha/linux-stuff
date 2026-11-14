@@ -10,7 +10,7 @@
 #   RUNTIME=vm tests/test_labs.sh 08   # VM labs (needs `make vm-up`)
 #   KEEP=1 ...                         # leave containers running afterwards
 set -uo pipefail
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/.." || exit 1
 COURSE=./bin/course
 RUNTIME=${RUNTIME:-docker}
 export NO_COLOR=1

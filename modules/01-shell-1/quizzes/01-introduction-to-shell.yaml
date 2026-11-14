@@ -8,10 +8,10 @@ questions:
     answer: b
     explanation: pwd means "print working directory". $HOME is your home directory, which is not necessarily where you are right now.
   - id: q2
-    prompt: Your prompt reads root@web01:/var/log#. What does the final # tell you?
+    prompt: 'Your prompt reads root@web01:/var/log#. What does the final # tell you?'
     options: {a: "The directory is a comment", b: "You are logged in as the root (administrator) account", c: "The previous command failed", d: "You are inside a script"}
     answer: b
-    explanation: By convention Bash ends the prompt with # for root and $ for ordinary users, so you can see at a glance when commands run with full privileges.
+    explanation: 'By convention Bash ends the prompt with # for root and $ for ordinary users, so you can see at a glance when commands run with full privileges.'
   - id: q3
     prompt: You are in /home/bob. Which path refers to the same place as /home/bob/projects/app?
     options: {a: "/projects/app", b: "./projects/app", c: "../projects/app", d: "~/app"}

@@ -5,6 +5,7 @@ minutes: 5
 objectives:
   - Review what has been built so far and what the demo depends on
 prerequisites: [08-storage/06-lvm]
+quiz: false
 tryit: none
 ---
 
@@ -63,6 +64,7 @@ which command you'd use first for each symptom:
 
 - Every module's skills are now part of one system.
 - The finale tests them together, under time pressure.
+- Observe before you change anything.
 
 ## Next
 

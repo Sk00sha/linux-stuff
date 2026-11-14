@@ -1,7 +1,7 @@
 ---
 id: 02-linux-core-concepts/07-file-types
 title: Linux File Types
-minutes: 15
+minutes: 12
 objectives:
   - Name the seven Linux file types and recognise them in ls -l output
   - Identify files with the file and stat commands

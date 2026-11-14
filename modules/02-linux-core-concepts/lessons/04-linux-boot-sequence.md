@@ -1,7 +1,7 @@
 ---
 id: 02-linux-core-concepts/04-linux-boot-sequence
 title: The Linux Boot Sequence
-minutes: 15
+minutes: 11
 objectives:
   - Name the four stages of booting a Linux machine
   - Explain what GRUB2, the kernel, the initramfs and systemd each do

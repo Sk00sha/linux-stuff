@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/07-iptables-introduction
 title: IPTABLES Introduction
-minutes: 20
+minutes: 11
 objectives:
   - Describe tables, chains, rules and targets
   - Explain how rule order and the default policy decide a packet's fate

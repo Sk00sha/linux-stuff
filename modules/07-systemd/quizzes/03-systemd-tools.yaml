@@ -18,7 +18,7 @@ questions:
     answer: b
     explanation: Drop-ins in /etc/systemd/system/NAME.service.d/ survive package updates; systemctl revert removes them.
   - id: q4
-    prompt: systemctl status shows "Loaded: ...; disabled" and "Active: active (running)". What does that mean?
+    prompt: 'systemctl status shows "Loaded: ...; disabled" and "Active: active (running)". What does that mean?'
     options: {a: "It's running now but won't start at the next boot", b: "It's broken", c: "It will start at boot but isn't running", d: "It's masked"}
     answer: a
     explanation: Enabled/disabled is about boot; active/inactive is about now. They're independent.

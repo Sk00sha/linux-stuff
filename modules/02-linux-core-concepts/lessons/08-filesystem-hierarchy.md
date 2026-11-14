@@ -1,7 +1,7 @@
 ---
 id: 02-linux-core-concepts/08-filesystem-hierarchy
 title: The Filesystem Hierarchy
-minutes: 10
+minutes: 11
 objectives:
   - Describe the purpose of the main top-level directories
   - Know where to look for configuration, logs, programs and user data

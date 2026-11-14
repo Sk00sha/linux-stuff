@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/05-file-permissions-and-ownership
 title: File Permissions and Ownership
-minutes: 20
+minutes: 14
 objectives:
   - Read rwx permissions for user, group and others
   - Change permissions with chmod in symbolic and octal notation

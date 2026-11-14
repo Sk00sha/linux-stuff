@@ -1,7 +1,7 @@
 ---
 id: 02-linux-core-concepts/05-runlevels
 title: Runlevels and systemd Targets
-minutes: 10
+minutes: 9
 objectives:
   - Map classic runlevels to systemd targets
   - Show and change the default boot target
@@ -64,6 +64,27 @@ network and lock you out. Only isolate to targets that keep what you need.
 You can also choose a target for a single boot by adding
 `systemd.unit=rescue.target` to the kernel command line in the GRUB menu —
 the standard way to repair a machine that no longer boots normally.
+
+### Emergency access and boot problems
+
+Two targets are reserved for repairs:
+
+- `rescue.target` mounts all local filesystems and starts a root shell with
+  only essential services — no networking, no logins from other users.
+- `emergency.target` is even more minimal: the root filesystem is mounted
+  read-only and almost nothing else runs. systemd drops into it on its own
+  when something critical fails at boot, for example a broken line in
+  `/etc/fstab` (module 08).
+
+Both ask for the root password (on many cloud images root has none, so you
+use the provider's serial console instead). From there you can fix the
+problem and continue with `systemctl default` or reboot.
+
+### Seeing what a target pulls in
+
+`systemctl list-dependencies multi-user.target` shows the tree of units a
+target wants, which is a quick way to understand why a service starts at
+boot — or why it doesn't.
 
 ## Try it
 

@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/03-access-control-files
 title: Access Control Files
-minutes: 15
+minutes: 11
 objectives:
   - Read the fields of /etc/passwd, /etc/shadow and /etc/group
   - Explain why passwords live in /etc/shadow

@@ -54,8 +54,11 @@ if [ "$ROLE" = bob-vm ]; then
   if [ ! -s /etc/course-disks ]; then
     : > /etc/course-disks.tmp
     for name in disk-a disk-b disk-c; do
-      dev=$(ls /dev/disk/by-id/ 2>/dev/null | grep -E "${name}|${name/-/}|${name/-/--}" | grep -v -- '-part' | head -1 || true)
-      [ -n "$dev" ] && echo "$name=/dev/disk/by-id/$dev" >> /etc/course-disks.tmp
+      dev=""
+      for link in /dev/disk/by-id/*; do
+        case "$link" in *-part*) continue ;; *"$name"*|*"${name/-/}"*|*"${name/-/--}"*) dev=$link; break ;; esac
+      done
+      [ -n "$dev" ] && echo "$name=$dev" >> /etc/course-disks.tmp
     done
     if [ "$(wc -l < /etc/course-disks.tmp)" -lt 3 ]; then
       : > /etc/course-disks.tmp

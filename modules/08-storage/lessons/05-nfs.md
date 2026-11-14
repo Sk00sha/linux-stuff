@@ -1,7 +1,7 @@
 ---
 id: 08-storage/05-nfs
 title: The NFS Filesystem
-minutes: 15
+minutes: 8
 objectives:
   - Export a directory from an NFS server with /etc/exports and exportfs
   - Mount an NFS share on a client by hand and via /etc/fstab
@@ -73,6 +73,22 @@ nfs-server:/srv/share  /mnt/share  nfs  defaults,_netdev,nofail  0  0
 `_netdev` tells systemd this mount needs the network, so it waits for it
 at boot. `nofail` keeps the client booting if the server is down.
 
+### Checking and troubleshooting
+
+| Command | Where | Shows |
+|---|---|---|
+| `sudo exportfs -v` | server | active exports and their options |
+| `showmount -e SERVER` | client | what the server offers (NFSv3 helper; may be blocked by firewalls) |
+| `findmnt -t nfs,nfs4` | client | mounted NFS shares and negotiated options |
+| `nfsstat -m` | client | per-mount statistics and version |
+| `journalctl -u nfs-server` | server | server-side errors |
+
+A mount that hangs usually means the server is unreachable (network,
+firewall on 2049) rather than a permissions problem; "access denied by
+server" means the client isn't in `/etc/exports` (or `exportfs -ra` wasn't
+run); "Permission denied" on a file after mounting is ordinary Unix
+permissions — check UIDs.
+
 ### Versions and ports
 
 Modern clients use NFSv4 (single TCP port **2049**, firewall-friendly);
@@ -107,6 +123,19 @@ TARGET     SOURCE                 FSTYPE OPTIONS
 /mnt/share nfs-server:/srv/share  nfs4   rw,relatime,vers=4.2,rsize=262144,wsize=262144,...
 Filesystem             Size  Used Avail Use% Mounted on
 nfs-server:/srv/share   31G  2.1G   27G   8% /mnt/share
+```
+
+Check an exports line for the classic space mistake before using it —
+`exportfs` would accept both, with very different meanings:
+
+```bash
+printf '/srv/a 192.168.56.10(rw)\n/srv/b 192.168.56.10 (rw)\n' > /tmp/exports.test
+grep -nE '[^ ] +\(' /tmp/exports.test || echo "no problems found"
+rm /tmp/exports.test
+```
+
+```text
+2:/srv/b 192.168.56.10 (rw)
 ```
 
 ## Common mistakes

@@ -1,7 +1,7 @@
 ---
 id: 05-networking/04-troubleshooting
 title: Network Troubleshooting
-minutes: 20
+minutes: 15
 objectives:
   - Troubleshoot connectivity layer by layer
   - Test reachability with ping and traceroute

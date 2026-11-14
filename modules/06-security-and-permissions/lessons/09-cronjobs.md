@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/09-cronjobs
 title: Cron Jobs
-minutes: 15
+minutes: 12
 objectives:
   - Read and write the five time fields of a crontab line
   - Manage per-user crontabs with crontab -e/-l/-u

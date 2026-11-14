@@ -1,7 +1,7 @@
 ---
 id: 01-shell-1/01-introduction-to-shell
 title: Introduction to the Shell
-minutes: 10
+minutes: 12
 objectives:
   - Explain the difference between a terminal and a shell
   - Read the parts of a shell prompt

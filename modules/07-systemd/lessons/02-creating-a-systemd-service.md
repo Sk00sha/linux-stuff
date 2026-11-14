@@ -1,7 +1,7 @@
 ---
 id: 07-systemd/02-creating-a-systemd-service
 title: Creating a systemd Service
-minutes: 20
+minutes: 12
 objectives:
   - Write a unit file with [Unit], [Service] and [Install] sections
   - Choose ExecStart, User, Restart, RestartSec, After/Wants and WantedBy

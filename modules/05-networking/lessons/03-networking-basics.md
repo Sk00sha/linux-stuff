@@ -1,7 +1,7 @@
 ---
 id: 05-networking/03-networking-basics
 title: Networking Basics
-minutes: 20
+minutes: 13
 objectives:
   - Read IP addresses, subnet masks and CIDR notation
   - Explain what a gateway and a routing table do

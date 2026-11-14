@@ -1,7 +1,7 @@
 ---
 id: 01-shell-1/02-basic-linux-commands
 title: Basic Linux Commands
-minutes: 15
+minutes: 13
 objectives:
   - List directory contents and read the long listing format
   - Create, copy, move, rename and remove files and directories

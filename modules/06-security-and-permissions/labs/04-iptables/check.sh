@@ -4,7 +4,7 @@ set -uo pipefail
 # shellcheck source=../../../../lib/check-helpers.sh
 . "${COURSE_ROOT:-$(cd "$(dirname "$0")/../../../.." && pwd)}/lib/check-helpers.sh"
 LAB=06-security-and-permissions/iptables
-DEVBOX=10.10.2.10 APP01=10.10.2.30 DB01=10.10.2.20
+APP01=10.10.2.30 DB01=10.10.2.20   # devbox is 10.10.2.10
 
 for h in devbox app01 db01; do require_lab "$h" "$LAB"; done
 

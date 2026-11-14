@@ -1,7 +1,7 @@
 ---
 id: 04-shell-2/05-vi-editor
 title: The VI Editor
-minutes: 20
+minutes: 11
 objectives:
   - Switch between vi's normal, insert and command-line modes
   - Move, insert, delete, copy, paste and undo

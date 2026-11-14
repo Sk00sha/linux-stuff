@@ -5,6 +5,7 @@ minutes: 5
 objectives:
   - Reflect on the course and choose what to learn next
 prerequisites: [09-client-demo/02-troubleshooting-playbook]
+quiz: false
 tryit: none
 ---
 

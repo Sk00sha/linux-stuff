@@ -1,7 +1,7 @@
 ---
 id: 09-client-demo/02-troubleshooting-playbook
 title: A Troubleshooting Playbook
-minutes: 15
+minutes: 9
 objectives:
   - Apply a repeatable method to an unknown failure
   - Use logs to turn symptoms into specific causes

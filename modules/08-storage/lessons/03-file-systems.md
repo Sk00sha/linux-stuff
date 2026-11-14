@@ -1,7 +1,7 @@
 ---
 id: 08-storage/03-file-systems
 title: File Systems in Linux
-minutes: 20
+minutes: 11
 objectives:
   - Compare ext2, ext3, ext4 and XFS
   - Create a filesystem with mkfs and mount it

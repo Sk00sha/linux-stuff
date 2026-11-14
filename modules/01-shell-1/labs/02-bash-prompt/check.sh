@@ -18,6 +18,7 @@ ibash() {
 
 check_t1() {
   local ps1
+  # shellcheck disable=SC2016  # expanded by the inner interactive shell
   ps1=$(ibash 'printf "%s|\n" "$PS1"')
   ps1=${ps1%|}
   case "$ps1" in
@@ -28,6 +29,7 @@ check_t1() {
 
 check_t2() {
   local p
+  # shellcheck disable=SC2016  # expanded by the inner interactive shell
   p=$(ibash 'echo "$PATH"')
   case ":$p:" in
     *:/opt/tools/bin:*) ;;

@@ -1,0 +1,18 @@
+# markdownlint configuration for course content.
+config:
+  default: true
+  MD013: false          # long lines: tables and command examples
+  MD024:
+    siblings_only: true # hints.md repeats "Level 1..3" under each task
+  MD033: false
+  MD025:
+    front_matter_title: ""   # lessons repeat their front-matter title as the H1
+  MD010:
+    code_blocks: false        # real command output contains tabs
+  MD038: false               # some code spans need a trailing space (PS1 examples)
+  MD060: false
+globs:
+  - "**/*.md"
+ignores:
+  - "node_modules/**"
+  - "runtime/vm/.vagrant/**"

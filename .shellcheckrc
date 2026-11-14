@@ -1,0 +1,5 @@
+# SC1091: helpers are sourced through a path computed at runtime ($COURSE_ROOT).
+# SC2015: graders use `cond && pass tN || fail tN "..."`; pass() always returns 0,
+#         so the fail branch only runs when the condition is false.
+disable=SC1091,SC2015
+external-sources=true

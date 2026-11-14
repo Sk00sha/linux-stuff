@@ -1,7 +1,7 @@
 ---
 id: 04-shell-2/02-file-compression-and-archival
 title: File Compression and Archival
-minutes: 15
+minutes: 12
 objectives:
   - Measure disk usage with du
   - Create, list and extract tar archives

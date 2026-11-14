@@ -6,6 +6,7 @@ objectives:
   - Start a lab and open a shell on the lab machine
   - Check your work, ask for hints and reset a lab
 prerequisites: [01-shell-1/03-command-line-help]
+quiz: false
 tryit: none
 ---
 

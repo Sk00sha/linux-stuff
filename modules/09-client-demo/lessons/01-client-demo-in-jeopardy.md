@@ -5,6 +5,7 @@ minutes: 5
 objectives:
   - Understand the demo environment's architecture before troubleshooting it
 prerequisites: [08-storage/07-project-status-meeting]
+quiz: false
 tryit: none
 ---
 
@@ -66,6 +67,7 @@ SEED=random make lab ID=final-troubleshooting
 
 - One web server, one database; all faults are on demo-web.
 - Request path: service → config → disk → name → network → database.
+- Several faults at once: keep testing end to end after every fix.
 
 ## Next
 

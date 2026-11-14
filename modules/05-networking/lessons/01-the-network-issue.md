@@ -6,6 +6,7 @@ objectives:
   - Describe the module's lab network
   - Name the layers you will check when troubleshooting
 prerequisites: [04-shell-2/04-io-redirection]
+quiz: false
 tryit: none
 ---
 
@@ -73,6 +74,7 @@ cat /etc/resolv.conf
 
 - Two subnets joined by a router; DNS, web and database servers on them.
 - Troubleshoot bottom-up: link, address, route, name, port.
+- Always test from the machine that has the problem.
 
 ## Next
 

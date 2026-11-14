@@ -6,6 +6,7 @@ objectives:
   - Understand why runlevels still appear in documentation
   - Know the full runlevel-to-target table and its distribution quirks
 prerequisites: [02-linux-core-concepts/05-runlevels]
+quiz: false
 tryit: none
 ---
 

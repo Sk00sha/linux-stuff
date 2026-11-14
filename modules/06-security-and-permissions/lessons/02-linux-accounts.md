@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/02-linux-accounts
 title: Linux Accounts
-minutes: 15
+minutes: 10
 objectives:
   - Explain users, groups, UIDs and GIDs
   - Distinguish the root, system and normal accounts

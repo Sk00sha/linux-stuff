@@ -3,7 +3,7 @@ id: 09-client-demo/00-story
 title: "Story: Client demonstration in jeopardy!"
 ---
 
-# Story: Client demonstration in jeopardy!
+# Story: Client demonstration in jeopardy
 
 Friday, 08:52. The client's delegation arrives at 10:00. The demo
 environment was rebuilt overnight by the deployment pipeline, and Bob opens

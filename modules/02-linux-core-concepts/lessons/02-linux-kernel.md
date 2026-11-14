@@ -1,7 +1,7 @@
 ---
 id: 02-linux-core-concepts/02-linux-kernel
 title: The Linux Kernel
-minutes: 15
+minutes: 11
 objectives:
   - Explain what the kernel does and what a system call is
   - Describe Linux as a monolithic but modular kernel

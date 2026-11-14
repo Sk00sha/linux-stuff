@@ -1,7 +1,7 @@
 ---
 id: 08-storage/02-disk-partitions
 title: Disk Partitions
-minutes: 20
+minutes: 10
 objectives:
   - Explain block devices and partitions
   - Compare MBR and GPT partition tables

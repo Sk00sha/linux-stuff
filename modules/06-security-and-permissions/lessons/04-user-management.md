@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/04-user-management
 title: User Management
-minutes: 15
+minutes: 12
 objectives:
   - Create users with a chosen UID, home, shell, comment and groups
   - Set, lock and expire passwords

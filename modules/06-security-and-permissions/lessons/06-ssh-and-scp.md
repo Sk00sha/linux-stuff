@@ -1,7 +1,7 @@
 ---
 id: 06-security-and-permissions/06-ssh-and-scp
 title: SSH and SCP
-minutes: 20
+minutes: 14
 objectives:
   - Log in to remote machines with ssh
   - Create a key pair and set up key-based authentication

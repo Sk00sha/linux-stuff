@@ -6,7 +6,7 @@ title: "Story: Where is my storage?"
 # Story: Where is my storage?
 
 Wednesday, two days before the demo, 08:15. The monitoring dashboard is
-red. bob-vm's root filesystem is 97 % full: Mercury's media uploads and
+red, and Bob's phone with it. bob-vm's root filesystem is 97 % full: Mercury's media uploads and
 reports have been landing on the same disk as the operating system.
 
 "Good news," says Marco, holding a coffee in each hand. "Infrastructure

@@ -16,7 +16,7 @@ questions:
     prompt: In the fstab line "UUID=... /mnt/data ext4 defaults 0 2", what does the final 2 mean?
     options: {a: "Mount it second", b: "fsck checks it at boot after the root filesystem", c: "Two copies are kept", d: "It's mounted read-only"}
     answer: b
-    explanation: The sixth field is the fsck pass number: 1 for /, 2 for others, 0 to skip.
+    explanation: 'The sixth field is the fsck pass number: 1 for /, 2 for others, 0 to skip.'
   - id: q4
     prompt: How do you test a new fstab entry without rebooting?
     options: {a: "sudo findmnt --verify, then sudo mount -a", b: "sudo reboot -t", c: "cat /etc/fstab", d: "sudo mkfs -a"}

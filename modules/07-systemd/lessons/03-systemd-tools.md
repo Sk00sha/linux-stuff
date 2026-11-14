@@ -1,7 +1,7 @@
 ---
 id: 07-systemd/03-systemd-tools
 title: systemd Tools
-minutes: 20
+minutes: 11
 objectives:
   - Start, stop, restart, reload, enable and disable services
   - Read status output and unit properties

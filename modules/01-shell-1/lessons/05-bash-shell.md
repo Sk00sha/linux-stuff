@@ -1,7 +1,7 @@
 ---
 id: 01-shell-1/05-bash-shell
 title: The Bash Shell
-minutes: 15
+minutes: 14
 objectives:
   - Tell shell variables and environment variables apart
   - Understand PATH and how commands are found

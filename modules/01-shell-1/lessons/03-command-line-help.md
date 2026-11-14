@@ -1,7 +1,7 @@
 ---
 id: 01-shell-1/03-command-line-help
 title: Command-line Help
-minutes: 10
+minutes: 14
 objectives:
   - Get a one-line description of a command with whatis
   - Read manual pages and understand man sections

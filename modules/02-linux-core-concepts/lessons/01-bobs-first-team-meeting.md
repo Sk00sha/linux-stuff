@@ -1,11 +1,12 @@
 ---
 id: 02-linux-core-concepts/01-bobs-first-team-meeting
 title: "Bob's First Team Meeting: Kernel and User Space"
-minutes: 5
+minutes: 8
 objectives:
   - Describe the main layers of a Linux system
   - Explain why this module needs a virtual machine
 prerequisites: [01-shell-1/05-bash-shell]
+quiz: false
 tryit: vm
 ---
 

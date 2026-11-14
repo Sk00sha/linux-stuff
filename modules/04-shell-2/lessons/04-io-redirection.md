@@ -1,7 +1,7 @@
 ---
 id: 04-shell-2/04-io-redirection
 title: IO Redirection
-minutes: 15
+minutes: 12
 objectives:
   - Name the three standard streams and their numbers
   - Redirect output and errors to files, separately or together

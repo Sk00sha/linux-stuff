@@ -1,7 +1,7 @@
 ---
 id: 02-linux-core-concepts/03-working-with-hardware
 title: Working with Hardware
-minutes: 15
+minutes: 11
 objectives:
   - Read kernel messages with dmesg
   - Inspect CPUs, memory, disks and PCI devices

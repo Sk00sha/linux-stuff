@@ -1,10 +1,11 @@
 ---
 id: 04-shell-2/01-behind-schedule
 title: "Behind Schedule: A Plan of Attack"
-minutes: 5
+minutes: 7
 objectives:
   - See how the tools of this module fit together
 prerequisites: [01-shell-1/05-bash-shell]
+quiz: false
 tryit: ubuntu
 ---
 
@@ -25,7 +26,7 @@ The plan for today, and the lesson that covers each part:
 | Old reports filling the disk | `du`, `tar`, `gzip`/`xz` | File Compression and Archival |
 | Which log files are huge or old? | `find` | Searching for Files and Patterns |
 | Which lines mention errors? | `grep` | Searching for Files and Patterns |
-| Output and errors mixed together | `>`, `2>`, `|`, `tee` | IO Redirection |
+| Output and errors mixed together | `>`, `2>`, `\|`, `tee` | IO Redirection |
 | Config must be edited on a bare server | `vi` | VI Editor |
 
 The key idea is the **pipeline**: the output of one command becomes the

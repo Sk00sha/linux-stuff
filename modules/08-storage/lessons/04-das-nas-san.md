@@ -1,12 +1,12 @@
 ---
 id: 08-storage/04-das-nas-san
 title: DAS, NAS and SAN
-minutes: 10
+minutes: 9
 objectives:
   - Distinguish direct-attached, network-attached and storage-area-network storage
   - Explain block storage versus file storage
 prerequisites: [08-storage/03-file-systems]
-tryit: none
+tryit: vm
 ---
 
 # DAS, NAS and SAN
@@ -44,6 +44,23 @@ one VM). The NFS lab builds a tiny NAS. A SAN volume would appear on the
 server as another block device and be handled exactly like the disks in the
 partitions and LVM labs.
 
+### Redundancy is a separate question
+
+None of these architectures protect data on their own. Disks fail, so
+storage is usually combined with **RAID** (several disks acting as one, with
+mirroring or parity: RAID 1, 5, 6, 10), either in hardware, in the storage
+array, or in Linux itself with `mdadm`. And RAID is not a backup: deleting a
+file deletes it on every mirror at once. Backups — copies kept elsewhere,
+ideally offline or immutable — are a separate layer again.
+
+### Questions to ask before choosing
+
+1. Does more than one server need the same data at the same time? → NAS.
+2. Does a database need low-latency block storage? → DAS or SAN.
+3. Must a volume move between servers or survive one server failing? → SAN
+   (or cloud block volumes).
+4. Who manages it — the server's admin, or a storage team?
+
 ### In the cloud
 
 Clouds use the same ideas under other names: **block volumes** (AWS EBS,
@@ -53,15 +70,50 @@ third model, accessed over HTTP rather than mounted.
 
 ## Try it
 
-Nothing to run — just look at a VM's storage through this lens:
+Look at the course VM's storage through this lens. Which disks are local
+(DAS), and how are they attached? (`TRAN` shows `sata`, `nvme`, `usb`,
+`iscsi`… and is empty for virtual disks on some hypervisors.)
 
-```bash norun
-lsblk -o NAME,SIZE,TYPE,TRAN,MODEL
-findmnt -t nfs,nfs4,cifs
+```bash
+lsblk -d -o NAME,SIZE,TYPE,TRAN,MODEL
 ```
 
-`TRAN` (transport) shows `sata`, `nvme`, `usb` or `iscsi`; the second
-command lists any file-storage mounts.
+```text
+NAME  SIZE TYPE TRAN MODEL
+sda    64G disk sata VBOX HARDDISK
+sdb     1G disk sata VBOX HARDDISK
+sdc     1G disk sata VBOX HARDDISK
+sdd     2G disk sata VBOX HARDDISK
+```
+
+Is any file storage (NAS) mounted?
+
+```bash
+findmnt -t nfs,nfs4,cifs || echo "no network filesystems mounted"
+```
+
+```text
+no network filesystems mounted
+```
+
+Every block device the kernel knows about, local or SAN, appears in the same
+list:
+
+```bash
+cat /proc/partitions
+```
+
+```text
+major minor  #blocks  name
+
+   8        0   67108864 sda
+   8        1       1024 sda1
+   8        2    2097152 sda2
+   8        3   65006592 sda3
+   8       16    1048576 sdb
+   8       32    1048576 sdc
+   8       48    2097152 sdd
+```
 
 ## Common mistakes
 

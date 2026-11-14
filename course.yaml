@@ -8,15 +8,15 @@ modules:
     runtime: docker
     items:
       - {type: story,  path: modules/01-shell-1/00-story.md}
-      - {type: lesson, path: modules/01-shell-1/lessons/01-introduction-to-shell.md, minutes: 10}
+      - {type: lesson, path: modules/01-shell-1/lessons/01-introduction-to-shell.md, minutes: 12}
       - {type: quiz,   path: modules/01-shell-1/quizzes/01-introduction-to-shell.yaml}
-      - {type: lesson, path: modules/01-shell-1/lessons/02-basic-linux-commands.md, minutes: 15}
+      - {type: lesson, path: modules/01-shell-1/lessons/02-basic-linux-commands.md, minutes: 13}
       - {type: quiz,   path: modules/01-shell-1/quizzes/02-basic-linux-commands.yaml}
-      - {type: lesson, path: modules/01-shell-1/lessons/03-command-line-help.md, minutes: 10}
+      - {type: lesson, path: modules/01-shell-1/lessons/03-command-line-help.md, minutes: 14}
       - {type: quiz,   path: modules/01-shell-1/quizzes/03-command-line-help.yaml}
       - {type: lesson, path: modules/01-shell-1/lessons/04-lab-introduction.md, minutes: 5}
       - {type: lab,    path: modules/01-shell-1/labs/01-working-with-the-shell}
-      - {type: lesson, path: modules/01-shell-1/lessons/05-bash-shell.md, minutes: 15}
+      - {type: lesson, path: modules/01-shell-1/lessons/05-bash-shell.md, minutes: 14}
       - {type: quiz,   path: modules/01-shell-1/quizzes/05-bash-shell.yaml}
       - {type: lab,    path: modules/01-shell-1/labs/02-bash-prompt}
 
@@ -25,19 +25,19 @@ modules:
     runtime: vm
     items:
       - {type: story,  path: modules/02-linux-core-concepts/00-story.md}
-      - {type: lesson, path: modules/02-linux-core-concepts/lessons/01-bobs-first-team-meeting.md, minutes: 5}
-      - {type: lesson, path: modules/02-linux-core-concepts/lessons/02-linux-kernel.md, minutes: 15}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/01-bobs-first-team-meeting.md, minutes: 8}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/02-linux-kernel.md, minutes: 11}
       - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/02-linux-kernel.yaml}
-      - {type: lesson, path: modules/02-linux-core-concepts/lessons/03-working-with-hardware.md, minutes: 15}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/03-working-with-hardware.md, minutes: 11}
       - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/03-working-with-hardware.yaml}
-      - {type: lesson, path: modules/02-linux-core-concepts/lessons/04-linux-boot-sequence.md, minutes: 15}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/04-linux-boot-sequence.md, minutes: 11}
       - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/04-linux-boot-sequence.yaml}
-      - {type: lesson, path: modules/02-linux-core-concepts/lessons/05-runlevels.md, minutes: 10}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/05-runlevels.md, minutes: 9}
       - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/05-runlevels.yaml}
       - {type: lesson, path: modules/02-linux-core-concepts/lessons/06-article-runlevels.md, minutes: 5}
-      - {type: lesson, path: modules/02-linux-core-concepts/lessons/07-file-types.md, minutes: 15}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/07-file-types.md, minutes: 12}
       - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/07-file-types.yaml}
-      - {type: lesson, path: modules/02-linux-core-concepts/lessons/08-filesystem-hierarchy.md, minutes: 10}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/08-filesystem-hierarchy.md, minutes: 11}
       - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/08-filesystem-hierarchy.yaml}
       - {type: lab,    path: modules/02-linux-core-concepts/labs/01-kernel-modules-boot-filetypes}
 
@@ -48,12 +48,12 @@ modules:
       - {type: story,  path: modules/03-package-management/00-story.md}
       - {type: lesson, path: modules/03-package-management/lessons/01-package-management-introduction.md, minutes: 10}
       - {type: quiz,   path: modules/03-package-management/quizzes/01-package-management-introduction.yaml}
-      - {type: lesson, path: modules/03-package-management/lessons/02-rpm-and-yum.md, minutes: 20}
+      - {type: lesson, path: modules/03-package-management/lessons/02-rpm-and-yum.md, minutes: 11}
       - {type: quiz,   path: modules/03-package-management/quizzes/02-rpm-and-yum.yaml}
       - {type: lab,    path: modules/03-package-management/labs/01-yum-and-rpm}
-      - {type: lesson, path: modules/03-package-management/lessons/03-dpkg-and-apt.md, minutes: 20}
+      - {type: lesson, path: modules/03-package-management/lessons/03-dpkg-and-apt.md, minutes: 10}
       - {type: quiz,   path: modules/03-package-management/quizzes/03-dpkg-and-apt.yaml}
-      - {type: lesson, path: modules/03-package-management/lessons/04-apt-vs-apt-get.md, minutes: 5}
+      - {type: lesson, path: modules/03-package-management/lessons/04-apt-vs-apt-get.md, minutes: 8}
       - {type: quiz,   path: modules/03-package-management/quizzes/04-apt-vs-apt-get.yaml}
       - {type: lab,    path: modules/03-package-management/labs/02-dpkg-and-apt}
 
@@ -62,15 +62,15 @@ modules:
     runtime: docker
     items:
       - {type: story,  path: modules/04-shell-2/00-story.md}
-      - {type: lesson, path: modules/04-shell-2/lessons/01-behind-schedule.md, minutes: 5}
-      - {type: lesson, path: modules/04-shell-2/lessons/02-file-compression-and-archival.md, minutes: 15}
+      - {type: lesson, path: modules/04-shell-2/lessons/01-behind-schedule.md, minutes: 7}
+      - {type: lesson, path: modules/04-shell-2/lessons/02-file-compression-and-archival.md, minutes: 12}
       - {type: quiz,   path: modules/04-shell-2/quizzes/02-file-compression-and-archival.yaml}
-      - {type: lesson, path: modules/04-shell-2/lessons/03-searching-for-files-and-patterns.md, minutes: 20}
+      - {type: lesson, path: modules/04-shell-2/lessons/03-searching-for-files-and-patterns.md, minutes: 13}
       - {type: quiz,   path: modules/04-shell-2/quizzes/03-searching-for-files-and-patterns.yaml}
-      - {type: lesson, path: modules/04-shell-2/lessons/04-io-redirection.md, minutes: 15}
+      - {type: lesson, path: modules/04-shell-2/lessons/04-io-redirection.md, minutes: 12}
       - {type: quiz,   path: modules/04-shell-2/quizzes/04-io-redirection.yaml}
       - {type: lab,    path: modules/04-shell-2/labs/01-shell-2}
-      - {type: lesson, path: modules/04-shell-2/lessons/05-vi-editor.md, minutes: 20}
+      - {type: lesson, path: modules/04-shell-2/lessons/05-vi-editor.md, minutes: 11}
       - {type: quiz,   path: modules/04-shell-2/quizzes/05-vi-editor.yaml}
       - {type: lab,    path: modules/04-shell-2/labs/02-vi-editor}
 
@@ -80,13 +80,13 @@ modules:
     items:
       - {type: story,  path: modules/05-networking/00-story.md}
       - {type: lesson, path: modules/05-networking/lessons/01-the-network-issue.md, minutes: 5}
-      - {type: lesson, path: modules/05-networking/lessons/02-dns.md, minutes: 20}
+      - {type: lesson, path: modules/05-networking/lessons/02-dns.md, minutes: 12}
       - {type: quiz,   path: modules/05-networking/quizzes/02-dns.yaml}
       - {type: lab,    path: modules/05-networking/labs/01-dns}
-      - {type: lesson, path: modules/05-networking/lessons/03-networking-basics.md, minutes: 20}
+      - {type: lesson, path: modules/05-networking/lessons/03-networking-basics.md, minutes: 13}
       - {type: quiz,   path: modules/05-networking/quizzes/03-networking-basics.yaml}
       - {type: lab,    path: modules/05-networking/labs/02-network-basics}
-      - {type: lesson, path: modules/05-networking/lessons/04-troubleshooting.md, minutes: 20}
+      - {type: lesson, path: modules/05-networking/lessons/04-troubleshooting.md, minutes: 15}
       - {type: quiz,   path: modules/05-networking/quizzes/04-troubleshooting.yaml}
       - {type: lab,    path: modules/05-networking/labs/03-troubleshooting}
 
@@ -96,25 +96,25 @@ modules:
     items:
       - {type: story,  path: modules/06-security-and-permissions/00-story.md}
       - {type: lesson, path: modules/06-security-and-permissions/lessons/01-security-incident.md, minutes: 5}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/02-linux-accounts.md, minutes: 15}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/02-linux-accounts.md, minutes: 10}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/02-linux-accounts.yaml}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/03-access-control-files.md, minutes: 15}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/03-access-control-files.md, minutes: 11}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/03-access-control-files.yaml}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/04-user-management.md, minutes: 15}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/04-user-management.md, minutes: 12}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/04-user-management.yaml}
       - {type: lab,    path: modules/06-security-and-permissions/labs/01-account-management}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/05-file-permissions-and-ownership.md, minutes: 20}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/05-file-permissions-and-ownership.md, minutes: 14}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/05-file-permissions-and-ownership.yaml}
       - {type: lab,    path: modules/06-security-and-permissions/labs/02-permissions-and-ownership}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/06-ssh-and-scp.md, minutes: 20}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/06-ssh-and-scp.md, minutes: 14}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/06-ssh-and-scp.yaml}
       - {type: lab,    path: modules/06-security-and-permissions/labs/03-ssh-and-scp}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/07-iptables-introduction.md, minutes: 20}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/07-iptables-introduction.md, minutes: 11}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/07-iptables-introduction.yaml}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/08-iptables-securing-the-environment.md, minutes: 20}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/08-iptables-securing-the-environment.md, minutes: 11}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/08-iptables-securing-the-environment.yaml}
       - {type: lab,    path: modules/06-security-and-permissions/labs/04-iptables}
-      - {type: lesson, path: modules/06-security-and-permissions/lessons/09-cronjobs.md, minutes: 15}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/09-cronjobs.md, minutes: 12}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/09-cronjobs.yaml}
       - {type: lab,    path: modules/06-security-and-permissions/labs/05-cronjob}
 
@@ -123,10 +123,10 @@ modules:
     runtime: vm
     items:
       - {type: story,  path: modules/07-systemd/00-story.md}
-      - {type: lesson, path: modules/07-systemd/lessons/01-working-overtime.md, minutes: 5}
-      - {type: lesson, path: modules/07-systemd/lessons/02-creating-a-systemd-service.md, minutes: 20}
+      - {type: lesson, path: modules/07-systemd/lessons/01-working-overtime.md, minutes: 6}
+      - {type: lesson, path: modules/07-systemd/lessons/02-creating-a-systemd-service.md, minutes: 12}
       - {type: quiz,   path: modules/07-systemd/quizzes/02-creating-a-systemd-service.yaml}
-      - {type: lesson, path: modules/07-systemd/lessons/03-systemd-tools.md, minutes: 20}
+      - {type: lesson, path: modules/07-systemd/lessons/03-systemd-tools.md, minutes: 11}
       - {type: quiz,   path: modules/07-systemd/quizzes/03-systemd-tools.yaml}
       - {type: lab,    path: modules/07-systemd/labs/01-systemd-services}
 
@@ -136,17 +136,17 @@ modules:
     items:
       - {type: story,  path: modules/08-storage/00-story.md}
       - {type: lesson, path: modules/08-storage/lessons/01-where-is-my-storage.md, minutes: 5}
-      - {type: lesson, path: modules/08-storage/lessons/02-disk-partitions.md, minutes: 20}
+      - {type: lesson, path: modules/08-storage/lessons/02-disk-partitions.md, minutes: 10}
       - {type: quiz,   path: modules/08-storage/quizzes/02-disk-partitions.yaml}
       - {type: lab,    path: modules/08-storage/labs/01-partitions}
-      - {type: lesson, path: modules/08-storage/lessons/03-file-systems.md, minutes: 20}
+      - {type: lesson, path: modules/08-storage/lessons/03-file-systems.md, minutes: 11}
       - {type: quiz,   path: modules/08-storage/quizzes/03-file-systems.yaml}
       - {type: lab,    path: modules/08-storage/labs/02-filesystems}
-      - {type: lesson, path: modules/08-storage/lessons/04-das-nas-san.md, minutes: 10}
+      - {type: lesson, path: modules/08-storage/lessons/04-das-nas-san.md, minutes: 9}
       - {type: quiz,   path: modules/08-storage/quizzes/04-das-nas-san.yaml}
-      - {type: lesson, path: modules/08-storage/lessons/05-nfs.md, minutes: 15}
+      - {type: lesson, path: modules/08-storage/lessons/05-nfs.md, minutes: 8}
       - {type: quiz,   path: modules/08-storage/quizzes/05-nfs.yaml}
-      - {type: lesson, path: modules/08-storage/lessons/06-lvm.md, minutes: 25}
+      - {type: lesson, path: modules/08-storage/lessons/06-lvm.md, minutes: 11}
       - {type: quiz,   path: modules/08-storage/quizzes/06-lvm.yaml}
       - {type: lab,    path: modules/08-storage/labs/03-lvm}
       - {type: lab,    path: modules/08-storage/labs/04-nfs}
@@ -158,7 +158,7 @@ modules:
     items:
       - {type: story,  path: modules/09-client-demo/00-story.md}
       - {type: lesson, path: modules/09-client-demo/lessons/01-client-demo-in-jeopardy.md, minutes: 5}
-      - {type: lesson, path: modules/09-client-demo/lessons/02-troubleshooting-playbook.md, minutes: 15}
+      - {type: lesson, path: modules/09-client-demo/lessons/02-troubleshooting-playbook.md, minutes: 9}
       - {type: quiz,   path: modules/09-client-demo/quizzes/02-troubleshooting-playbook.yaml}
       - {type: lab,    path: modules/09-client-demo/labs/01-final-troubleshooting}
       - {type: lesson, path: modules/09-client-demo/lessons/03-finale.md, minutes: 5}

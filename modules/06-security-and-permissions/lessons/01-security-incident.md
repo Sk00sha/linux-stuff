@@ -5,6 +5,7 @@ minutes: 5
 objectives:
   - Describe the layers of Linux security covered in this module
 prerequisites: [05-networking/04-troubleshooting]
+quiz: false
 tryit: none
 ---
 
@@ -58,6 +59,7 @@ tail -5 /etc/passwd
 - Security comes in layers: accounts, permissions, authentication, network,
   operations.
 - Apply least privilege at every layer.
+- Fix the cause and close the path, not just the visible symptom.
 
 ## Next
 
