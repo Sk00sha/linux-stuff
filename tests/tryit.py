@@ -76,7 +76,15 @@ def run_lesson(path, update):
         # No VM available: execute the commands in the systemd container to
         # prove they exist and run, but keep the representative VM output.
         kind, verify_only = "systemd", True
-    if kind not in IMAGES or not image_exists(IMAGES[kind]):
+    lab_svc = None
+    if kind.startswith("lab:"):
+        # run inside a running compose service, e.g. lab:client (module 05)
+        lab_svc = kind.split(":", 1)[1]
+        services = fm.get("tryit_services", [lab_svc])
+        subprocess.run(["docker", "compose", "-f", os.path.join(ROOT, "runtime/docker/compose.yaml"),
+                        "--profile", "*", "up", "-d", "--no-build", "--wait"] + services,
+                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    elif kind not in IMAGES or not image_exists(IMAGES[kind]):
         return rel, "skipped (%s runtime)" % kind, []
     name = "tryit-" + uuid.uuid4().hex[:8]
     args = ["docker", "run", "-d", "--name", name, "--hostname", "ubuntu", "--label", "course=linux-basics"]
@@ -84,8 +92,11 @@ def run_lesson(path, update):
         args += ["--privileged", "--cgroupns=host", "--tmpfs", "/run", "--tmpfs", "/run/lock"]
     else:
         args += ["--cap-add", "NET_ADMIN"]
-    args += ["-v", ROOT + ":/course:ro", IMAGES[kind]]
-    subprocess.run(args, check=True, stdout=subprocess.DEVNULL)
+    args += ["-v", ROOT + ":/course:ro", IMAGES.get(kind, "")]
+    if lab_svc:
+        name = "lbc-" + lab_svc
+    else:
+        subprocess.run(args, check=True, stdout=subprocess.DEVNULL)
     failures = []
     replacements = []
     try:
@@ -119,7 +130,8 @@ def run_lesson(path, update):
                     olines = olines[:MAX_LINES - 1] + ["..."]
                 replacements.append((j + 1, k2, olines))
     finally:
-        subprocess.run(["docker", "rm", "-f", name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if not lab_svc:
+            subprocess.run(["docker", "rm", "-f", name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     if update and replacements and not verify_only:
         for a, b, new in sorted(replacements, reverse=True):
             lines[a:b] = new

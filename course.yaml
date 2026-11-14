@@ -73,3 +73,19 @@ modules:
       - {type: lesson, path: modules/04-shell-2/lessons/05-vi-editor.md, minutes: 20}
       - {type: quiz,   path: modules/04-shell-2/quizzes/05-vi-editor.yaml}
       - {type: lab,    path: modules/04-shell-2/labs/02-vi-editor}
+
+  - id: 05-networking
+    title: Networking
+    runtime: docker
+    items:
+      - {type: story,  path: modules/05-networking/00-story.md}
+      - {type: lesson, path: modules/05-networking/lessons/01-the-network-issue.md, minutes: 5}
+      - {type: lesson, path: modules/05-networking/lessons/02-dns.md, minutes: 20}
+      - {type: quiz,   path: modules/05-networking/quizzes/02-dns.yaml}
+      - {type: lab,    path: modules/05-networking/labs/01-dns}
+      - {type: lesson, path: modules/05-networking/lessons/03-networking-basics.md, minutes: 20}
+      - {type: quiz,   path: modules/05-networking/quizzes/03-networking-basics.yaml}
+      - {type: lab,    path: modules/05-networking/labs/02-network-basics}
+      - {type: lesson, path: modules/05-networking/lessons/04-troubleshooting.md, minutes: 20}
+      - {type: quiz,   path: modules/05-networking/quizzes/04-troubleshooting.yaml}
+      - {type: lab,    path: modules/05-networking/labs/03-troubleshooting}

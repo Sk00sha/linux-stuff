@@ -1,0 +1,15 @@
+id: 05-networking/troubleshooting
+title: The web server that nobody can reach
+runtime: docker
+services: [client, web01]
+login: {service: client, user: bob}
+minutes: 25
+tasks:
+  - id: t1
+    text: From client, the name web01 must resolve to web01's real address. Find and fix what makes it resolve wrongly.
+  - id: t2
+    text: The web app on web01 must listen on TCP port 80.
+  - id: t3
+    text: The web app must accept connections from other machines, not only from web01 itself.
+  - id: t4
+    text: "End to end: running curl http://web01/ on client must return the page \"Mercury demo: web01 OK\"."

@@ -1,0 +1,15 @@
+id: 05-networking/network-basics
+title: Route the client to the backend
+runtime: docker
+services: [client, router, db01]
+login: {service: client, user: bob}
+minutes: 20
+tasks:
+  - id: t1
+    text: Write client's IPv4 address on eth0, in CIDR notation (address/prefix), into /home/bob/client-ip.txt.
+  - id: t2
+    text: The client has no route to the backend network 10.10.2.0/24. Add one that sends this traffic through the machine called router.
+  - id: t3
+    text: Verify that client can now ping db01 at 10.10.2.20.
+  - id: t4
+    text: db01 runs a service on TCP port 5432 that greets every connection with a one-line banner. Save that banner into /home/bob/db-banner.txt.

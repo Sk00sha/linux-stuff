@@ -149,9 +149,15 @@ services:
 networks:
   frontend:
     labels: {course: linux-basics}
+    # Let traffic between the course networks be routed by the "router"
+    # container (Docker 28+ otherwise drops it in the host's raw table).
+    driver_opts: {com.docker.network.bridge.gateway_mode_ipv4: nat-unprotected}
     ipam: {config: [{subnet: 10.10.1.0/24, gateway: 10.10.1.1}]}
   backend:
     labels: {course: linux-basics}
+    # Let traffic between the course networks be routed by the "router"
+    # container (Docker 28+ otherwise drops it in the host's raw table).
+    driver_opts: {com.docker.network.bridge.gateway_mode_ipv4: nat-unprotected}
     ipam: {config: [{subnet: 10.10.2.0/24, gateway: 10.10.2.1}]}
   demo:
     labels: {course: linux-basics}

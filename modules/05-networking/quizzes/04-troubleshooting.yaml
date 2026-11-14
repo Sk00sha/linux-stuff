@@ -1,0 +1,29 @@
+id: 05-networking/04-troubleshooting
+title: "Quiz: Network Troubleshooting"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: "ss -tlnp on web01 shows LISTEN on 127.0.0.1:8080. What does that mean for other machines?"
+    options: {a: They can connect on 8080, b: They cannot connect; the service only accepts connections from web01 itself, c: They must use port 80, d: The service is down}
+    answer: b
+    explanation: 127.0.0.1 is the loopback address. To be reachable from outside, it must listen on 0.0.0.0 (all addresses) or the machine's own IP.
+  - id: q2
+    prompt: "nc -zv db01 5432 reports Connection refused. What does it tell you?"
+    options: {a: There is no route to db01, b: db01 answered but nothing listens on port 5432, c: DNS failed, d: A firewall silently drops packets}
+    answer: b
+    explanation: A refusal is an active answer from the host. Silent drops and routing problems cause timeouts instead.
+  - id: q3
+    prompt: Ping to a server fails, but curl to its web page works. What is the most likely explanation?
+    options: {a: The server is down, b: ICMP is blocked by a firewall while TCP port 80 is allowed, c: DNS is broken, d: curl uses a different network card}
+    answer: b
+    explanation: ping uses ICMP, which is often filtered. Always test the real port too.
+  - id: q4
+    prompt: Following the layered method, which do you check first?
+    options: {a: Whether the service is listening, b: Whether the interface is up and has the right address, c: The DNS name, d: The application logs}
+    answer: b
+    explanation: Start at the bottom (link, address), then route, name, and finally port/service.
+  - id: q5
+    prompt: Which command shows each router on the path to a host?
+    options: {a: traceroute, b: ss, c: dig, d: ip link}
+    answer: a
+    explanation: traceroute (or tracepath) lists the hops, which shows where packets stop.
