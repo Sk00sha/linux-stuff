@@ -56,3 +56,20 @@ modules:
       - {type: lesson, path: modules/03-package-management/lessons/04-apt-vs-apt-get.md, minutes: 5}
       - {type: quiz,   path: modules/03-package-management/quizzes/04-apt-vs-apt-get.yaml}
       - {type: lab,    path: modules/03-package-management/labs/02-dpkg-and-apt}
+
+  - id: 04-shell-2
+    title: Working with Shell II
+    runtime: docker
+    items:
+      - {type: story,  path: modules/04-shell-2/00-story.md}
+      - {type: lesson, path: modules/04-shell-2/lessons/01-behind-schedule.md, minutes: 5}
+      - {type: lesson, path: modules/04-shell-2/lessons/02-file-compression-and-archival.md, minutes: 15}
+      - {type: quiz,   path: modules/04-shell-2/quizzes/02-file-compression-and-archival.yaml}
+      - {type: lesson, path: modules/04-shell-2/lessons/03-searching-for-files-and-patterns.md, minutes: 20}
+      - {type: quiz,   path: modules/04-shell-2/quizzes/03-searching-for-files-and-patterns.yaml}
+      - {type: lesson, path: modules/04-shell-2/lessons/04-io-redirection.md, minutes: 15}
+      - {type: quiz,   path: modules/04-shell-2/quizzes/04-io-redirection.yaml}
+      - {type: lab,    path: modules/04-shell-2/labs/01-shell-2}
+      - {type: lesson, path: modules/04-shell-2/lessons/05-vi-editor.md, minutes: 20}
+      - {type: quiz,   path: modules/04-shell-2/quizzes/05-vi-editor.yaml}
+      - {type: lab,    path: modules/04-shell-2/labs/02-vi-editor}

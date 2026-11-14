@@ -1,0 +1,17 @@
+id: 04-shell-2/vi-editor
+title: Fix the Mercury config with vi
+runtime: docker
+services: [ubuntu]
+login: {service: ubuntu, user: bob}
+minutes: 20
+tasks:
+  - id: t1
+    text: In /home/bob/mercury.conf change the line port = 8080 to port = 80.
+  - id: t2
+    text: Change every occurrence of development to production in the file.
+  - id: t3
+    text: Delete the line that starts with debug_password.
+  - id: t4
+    text: Add the line demo_client = halvorsen as the last line of the file. All other lines must stay unchanged.
+  - id: t5
+    text: A crashed session left a stale swap file for mercury.conf. Make sure no swap file remains when you are done.

@@ -1,0 +1,15 @@
+id: 04-shell-2/shell-2
+title: Logs, reports and a noisy script
+runtime: docker
+services: [ubuntu]
+login: {service: ubuntu, user: bob}
+minutes: 30
+tasks:
+  - id: t1
+    text: Archive the directory /home/bob/reports into the gzip-compressed tar file /home/bob/reports.tar.gz (paths inside the archive must start with reports/).
+  - id: t2
+    text: Find every file whose name ends in .log and that is larger than 1 MiB anywhere under /var/app, and write their full paths, one per line, into /home/bob/biglogs.txt.
+  - id: t3
+    text: Save every line of /var/app/app.log that contains the word error in any letter case into /home/bob/errors.txt.
+  - id: t4
+    text: Run /opt/mercury/start.sh so that its standard output goes to /home/bob/start.out and its standard error goes to /home/bob/start.err.

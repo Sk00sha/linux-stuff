@@ -1,0 +1,29 @@
+id: 04-shell-2/02-file-compression-and-archival
+title: "Quiz: File Compression and Archival"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which command creates a gzip-compressed archive logs.tar.gz of the directory logs?
+    options: {a: tar -xzf logs.tar.gz logs, b: tar -czf logs.tar.gz logs, c: gzip -r logs logs.tar.gz, d: tar -tzf logs logs.tar.gz}
+    answer: b
+    explanation: -c creates, -z compresses with gzip, -f names the archive file, then come the files to include. -x extracts and -t lists.
+  - id: q2
+    prompt: You ran gzip notes.txt. What is in the directory now?
+    options: {a: notes.txt and notes.txt.gz, b: Only notes.txt.gz, c: Only notes.txt, d: notes.tar.gz}
+    answer: b
+    explanation: gzip replaces the original with the compressed file. Use gzip -k to keep the original.
+  - id: q3
+    prompt: How do you see what is inside backup.tar.xz without extracting it?
+    options: {a: tar -tJf backup.tar.xz, b: tar -cJf backup.tar.xz, c: xz backup.tar.xz, d: cat backup.tar.xz}
+    answer: a
+    explanation: -t lists the contents; -J selects xz (recent GNU tar also autodetects it).
+  - id: q4
+    prompt: Which command shows the total size of /var/log in a human-readable form?
+    options: {a: df -h /var/log, b: du -sh /var/log, c: ls -s /var/log, d: tar -tvf /var/log}
+    answer: b
+    explanation: du -s summarises disk usage for a directory and -h makes it human-readable. df shows free space per filesystem.
+  - id: q5
+    prompt: How do you search for "timeout" in the compressed log syslog.2.gz without decompressing it?
+    options: {a: grep timeout syslog.2.gz, b: zgrep timeout syslog.2.gz, c: gunzip timeout syslog.2.gz, d: tar -xzf syslog.2.gz timeout}
+    answer: b
+    explanation: zgrep (like zcat and zless) reads gzip data on the fly. Plain grep would search the compressed bytes.
