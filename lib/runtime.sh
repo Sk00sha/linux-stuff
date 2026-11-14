@@ -5,7 +5,7 @@
 # Environment:
 #   COURSE_ROOT     repository root (auto-detected)
 #   COURSE_RUNTIME  docker | vm        (set by bin/course from lab.yaml)
-#   COURSE_VM_TOOL  vagrant | multipass | incus   (auto-detected if unset)
+#   COURSE_VM_TOOL  vagrant | multipass | incus | lima   (auto-detected if unset)
 #   COURSE_TIMEOUT  seconds per remote command (default 60)
 
 : "${COURSE_ROOT:=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
@@ -22,6 +22,8 @@ course_vm_tool() {
     echo incus
   elif command -v multipass >/dev/null 2>&1 && multipass info bob-vm >/dev/null 2>&1; then
     echo multipass
+  elif command -v limactl >/dev/null 2>&1 && limactl list -q 2>/dev/null | grep -qx bob-vm; then
+    echo lima
   else
     echo none
   fi
@@ -46,11 +48,12 @@ _remote() {
   case "$tool" in
     vagrant)   (cd "$COURSE_ROOT/runtime/vm" && timeout "$COURSE_TIMEOUT" vagrant ssh "$svc" -c "$sudo_cmd" -- -q) ;;
     multipass) timeout "$COURSE_TIMEOUT" multipass exec "$svc" -- bash -c "$sudo_cmd" ;;
+    lima)      timeout "$COURSE_TIMEOUT" limactl shell "$svc" bash -c "$sudo_cmd" ;;
     incus)     timeout "$COURSE_TIMEOUT" incus exec "$svc" -- bash -c "$sudo_cmd" ;;
     # Development/CI only: a systemd container named lbc-<svc> stands in for
     # the VM. Never use it for labs that touch kernel modules or disks.
     docker)    timeout "$COURSE_TIMEOUT" docker exec -i "lbc-$svc" bash -c "$sudo_cmd" ;;
-    *) echo "No running course VM found (tried vagrant, incus, multipass). Run 'make vm-up'." >&2; return 125 ;;
+    *) echo "No running course VM found (tried vagrant, incus, multipass, lima). Run 'make vm-up'." >&2; return 125 ;;
   esac
 }
 

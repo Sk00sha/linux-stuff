@@ -1,0 +1,27 @@
+# Lima equivalent of the Vagrant VM (macOS, Intel and Apple Silicon).
+#
+#   for d in diska:1 diskb:1 diskc:2; do limactl disk create "course-${d%%:*}" --size "${d##*:}G"; done
+#   limactl start --name bob-vm runtime/vm/lima.yaml
+#   limactl shell bob-vm sudo COURSE_ROLE=bob-vm bash /course/runtime/vm/provision.sh
+#
+# Lima attaches the extra disks as /dev/vdb.. without serials; provision.sh
+# then identifies the blank disks by size and records them in /etc/course-disks.
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-amd64.img"
+    arch: "x86_64"
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-arm64.img"
+    arch: "aarch64"
+cpus: 2
+memory: "2GiB"
+disk: "12GiB"
+mounts:
+  - location: "."          # start limactl from the repository root
+    mountPoint: "/course"
+    writable: false
+additionalDisks:
+  - name: course-diska
+    format: false
+  - name: course-diskb
+    format: false
+  - name: course-diskc
+    format: false

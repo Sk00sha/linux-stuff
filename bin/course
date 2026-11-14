@@ -419,7 +419,8 @@ def login_shell(ctx):
         inner = "sudo -iu %s" % user
         cmd = {"vagrant": ["vagrant", "ssh", svc, "-c", inner],
                "incus": ["incus", "exec", svc, "--", "bash", "-c", inner],
-               "multipass": ["multipass", "exec", svc, "--", "bash", "-c", inner]}[tool]
+               "multipass": ["multipass", "exec", svc, "--", "bash", "-c", inner],
+               "lima": ["limactl", "shell", svc, "bash", "-c", inner]}[tool]
     print(dim("Entering %s as %s. Type `exit` to leave; then run: course check %s" % (
         svc, user, ctx["env"]["LAB_ID"])))
     return subprocess.run(cmd, cwd=VM_DIR if ctx["runtime"] == "vm" else None).returncode

@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      vm_labs:
+        description: "Also run the VM labs (needs a self-hosted runner with nested virtualisation)"
+        type: boolean
+        default: false
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: shellcheck
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck
+          git ls-files '*.sh' runtime/docker/webctl | xargs shellcheck -x
+      - name: markdownlint
+        run: npx --yes markdownlint-cli2@0.17.2
+
+  unit:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python: ["3.8", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: unit tests (standard library only)
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: unit tests (with PyYAML cross-check)
+        run: pip install pyyaml && python -m unittest discover -s tests -p 'test_*.py'
+
+  labs-docker:
+    needs: unit
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        module: ["01", "03", "04", "05", "06", "07", "09"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: build images
+        run: |
+          images="ubuntu"
+          case "${{ matrix.module }}" in
+            03) images="ubuntu rocky" ;;
+            05) images="ubuntu dns" ;;
+            07|09) images="systemd" ;;
+          esac
+          docker compose -f runtime/docker/compose.yaml --profile '*' build $images
+          [ "${{ matrix.module }}" = 09 ] && docker pull -q postgres:16 || true
+      - name: end-to-end lab tests
+        run: bash tests/test_labs.sh ${{ matrix.module }}
+
+  tryit:
+    needs: unit
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: build images
+        run: docker compose -f runtime/docker/compose.yaml --profile '*' build ubuntu systemd dns
+      - name: run every Try it block (Docker modules)
+        run: |
+          python3 tests/tryit.py modules/01-shell-1 modules/03-package-management modules/04-shell-2 \
+            modules/05-networking modules/06-security-and-permissions modules/07-systemd modules/09-client-demo
+      - name: smoke-test VM lessons' commands in a systemd container
+        run: python3 tests/tryit.py --vm-in-docker modules/02-linux-core-concepts modules/08-storage
+
+  labs-vm:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.vm_labs }}
+    runs-on: [self-hosted, linux, nested-virt]
+    steps:
+      - uses: actions/checkout@v4
+      - name: start the course VM
+        run: cd runtime/vm && vagrant up
+      - name: VM lab tests
+        run: |
+          RUNTIME=vm bash tests/test_labs.sh 02
+          RUNTIME=vm bash tests/test_labs.sh 07
+          RUNTIME=vm bash tests/test_labs.sh 08
+      - name: destroy the VM
+        if: always()
+        run: cd runtime/vm && vagrant destroy -f
