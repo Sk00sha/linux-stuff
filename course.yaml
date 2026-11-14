@@ -144,7 +144,7 @@ modules:
       - {type: lab,    path: modules/08-storage/labs/02-filesystems}
       - {type: lesson, path: modules/08-storage/lessons/04-das-nas-san.md, minutes: 9}
       - {type: quiz,   path: modules/08-storage/quizzes/04-das-nas-san.yaml}
-      - {type: lesson, path: modules/08-storage/lessons/05-nfs.md, minutes: 8}
+      - {type: lesson, path: modules/08-storage/lessons/05-nfs.md, minutes: 9}
       - {type: quiz,   path: modules/08-storage/quizzes/05-nfs.yaml}
       - {type: lesson, path: modules/08-storage/lessons/06-lvm.md, minutes: 11}
       - {type: quiz,   path: modules/08-storage/quizzes/06-lvm.yaml}

@@ -121,7 +121,9 @@ cpgr (8)             - copy with locking the given file to the password or gr...
 ```
 
 Read just the first lines of a man page and a `--help` summary (in real use
-you would simply run `man ls` and press `q` to leave):
+you would simply run `man ls` and press `q` to leave). `| head -12` is a
+*pipe*: it hands the output to `head`, which keeps the first 12 lines — the
+next lesson and module 04 explain pipes properly:
 
 ```bash
 man ls | head -12
@@ -152,7 +154,8 @@ cd: cd [-L|[-P [-e]] [-@]] [dir]
     Change the shell working directory.
 ```
 
-Save a description to a file — exactly what the first lab will ask of you:
+Save a description to a file — exactly what the first lab will ask of you.
+`>` sends a command's output into a file instead of to the screen:
 
 ```bash
 whatis tree > ~/tree-info.txt

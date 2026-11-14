@@ -73,6 +73,17 @@ as you finish it.
 
 Try to stop at the lowest level that gets you moving again.
 
+### Three shortcuts you'll meet early
+
+The labs and lessons use three things before their own lessons explain them
+in depth. Here's enough to get going:
+
+| You'll see | Means | Full lesson |
+|---|---|---|
+| `sudo COMMAND` | run COMMAND as the administrator (root). In the lab machines bob may use sudo without a password. | Module 06, Linux Accounts |
+| `COMMAND > FILE` | save COMMAND's output in FILE instead of printing it (replacing FILE) | Module 04, IO Redirection |
+| `CMD1 \| CMD2` | a **pipe**: feed CMD1's output into CMD2, e.g. `man ls \| head -5` shows the first five lines | Module 04, IO Redirection |
+
 ### Quizzes and progress
 
 Each lesson has a short quiz: `make quiz ID=01-introduction-to-shell` or

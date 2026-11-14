@@ -11,9 +11,9 @@ Generated from `course.yaml` by `bin/course syllabus`. Do not edit by hand.
 | 05 Networking | docker | 4 | 3 | 3 | 2h 01m |
 | 06 Security and File Permissions | docker | 9 | 8 | 5 | 4h 06m |
 | 07 Service Management with systemd | vm | 3 | 2 | 1 | 1h 07m |
-| 08 Storage in Linux | vm | 7 | 5 | 4 | 2h 46m |
+| 08 Storage in Linux | vm | 7 | 5 | 4 | 2h 47m |
 | 09 The Client Demonstration | docker | 3 | 1 | 1 | 1h 24m |
-| **Total** | | | | | **19h 06m** |
+| **Total** | | | | | **19h 07m** |
 
 ## 01-shell-1 — Working with Shell I
 
@@ -158,7 +158,7 @@ Runtime: **vm** · Estimated time: **1h 07m**
 
 ## 08-storage — Storage in Linux
 
-Runtime: **vm** · Estimated time: **2h 46m**
+Runtime: **vm** · Estimated time: **2h 47m**
 
 | # | Type | Title | Minutes | Path |
 |---|---|---|---|---|
@@ -172,7 +172,7 @@ Runtime: **vm** · Estimated time: **2h 46m**
 | 8 | lab | A persistent data filesystem | 20 | [`labs/02-filesystems`](modules/08-storage/labs/02-filesystems) |
 | 9 | lesson | DAS, NAS and SAN | 9 | [`lessons/04-das-nas-san.md`](modules/08-storage/lessons/04-das-nas-san.md) |
 | 10 | quiz | Quiz: DAS, NAS and SAN | 3 | [`quizzes/04-das-nas-san.yaml`](modules/08-storage/quizzes/04-das-nas-san.yaml) |
-| 11 | lesson | The NFS Filesystem | 8 | [`lessons/05-nfs.md`](modules/08-storage/lessons/05-nfs.md) |
+| 11 | lesson | The NFS Filesystem | 9 | [`lessons/05-nfs.md`](modules/08-storage/lessons/05-nfs.md) |
 | 12 | quiz | Quiz: The NFS Filesystem | 3 | [`quizzes/05-nfs.yaml`](modules/08-storage/quizzes/05-nfs.yaml) |
 | 13 | lesson | LVM — Logical Volume Manager | 11 | [`lessons/06-lvm.md`](modules/08-storage/lessons/06-lvm.md) |
 | 14 | quiz | Quiz: LVM | 3 | [`quizzes/06-lvm.yaml`](modules/08-storage/quizzes/06-lvm.yaml) |

@@ -1,7 +1,7 @@
 ---
 id: 08-storage/05-nfs
 title: The NFS Filesystem
-minutes: 8
+minutes: 9
 objectives:
   - Export a directory from an NFS server with /etc/exports and exportfs
   - Mount an NFS share on a client by hand and via /etc/fstab
