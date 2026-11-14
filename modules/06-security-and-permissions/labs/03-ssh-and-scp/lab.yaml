@@ -1,0 +1,15 @@
+id: 06-security-and-permissions/ssh-and-scp
+title: Keys, not passwords
+runtime: docker
+services: [devbox, app01]
+login: {service: devbox, user: bob}
+minutes: 20
+tasks:
+  - id: t1
+    text: Create an SSH key pair for bob on devbox (ed25519 or rsa) in the default location under ~/.ssh.
+  - id: t2
+    text: Set up key-based login so that bob on devbox can run ssh bob@app01 without being asked for a password.
+  - id: t3
+    text: Copy /home/bob/caleston-code.tar.gz from devbox to /opt/ on app01.
+  - id: t4
+    text: The copy on app01 must keep the original file's modification time.

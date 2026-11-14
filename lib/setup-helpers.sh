@@ -37,3 +37,13 @@ ensure_user() {
 
 # remote script from stdin: on <svc> [user]
 on() { _remote "$1" "${2:-root}"; }
+
+# standard_bob svc : bob exists with a home, password caleston123 and
+# passwordless sudo — the state every lab expects unless it says otherwise.
+standard_bob() {
+  run_on "$1" "id bob >/dev/null 2>&1 || useradd -m -s /bin/bash -c 'Bob (new hire)' bob
+echo 'bob:caleston123' | chpasswd
+usermod -aG \$(getent group sudo >/dev/null && echo sudo || echo wheel) bob
+echo 'bob ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/90-bob && chmod 440 /etc/sudoers.d/90-bob
+passwd -u bob >/dev/null 2>&1 || true"
+}

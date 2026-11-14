@@ -4,12 +4,12 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: You open a file in vi and want to start typing at the cursor. Which key?
-    options: {a: i, b: ":", c: x, d: dd}
+    options: {a: "i", b: ":", c: "x", d: "dd"}
     answer: a
     explanation: i enters insert mode before the cursor. x deletes a character and dd deletes the line.
   - id: q2
     prompt: How do you quit vi and discard all unsaved changes?
-    options: {a: ":wq", b: ":q!", c: ":w", d: ZZ}
+    options: {a: ":wq", b: ":q!", c: ":w", d: "ZZ"}
     answer: b
     explanation: ":q! quits without saving. :wq and ZZ save first; :w only saves."
   - id: q3
@@ -19,11 +19,11 @@ questions:
     explanation: ":%s applies the substitution to all lines and the g flag replaces every match on each line. Without % only the current line changes."
   - id: q4
     prompt: In normal mode, what do yy followed by p do?
-    options: {a: Delete the line twice, b: Copy the current line and paste it below, c: Undo twice, d: Save the file}
+    options: {a: "Delete the line twice", b: "Copy the current line and paste it below", c: "Undo twice", d: "Save the file"}
     answer: b
     explanation: yy yanks (copies) the line and p puts it after the cursor line.
   - id: q5
     prompt: Opening config.yml, vim warns that .config.yml.swp already exists. What most likely happened?
-    options: {a: The file is corrupted beyond repair, b: A previous editing session was interrupted (or is still open), c: The disk is full, d: vim needs to be reinstalled}
+    options: {a: "The file is corrupted beyond repair", b: "A previous editing session was interrupted (or is still open)", c: "The disk is full", d: "vim needs to be reinstalled"}
     answer: b
     explanation: Vim keeps unsaved changes in a swap file. A leftover one means a crash or an editor still open elsewhere; recover with vim -r or delete it once you're sure.

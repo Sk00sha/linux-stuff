@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: "/etc/nsswitch.conf contains hosts: files dns. What does it mean?"
-    options: {a: Use DNS first and /etc/hosts as a fallback, b: Look in /etc/hosts first then ask DNS, c: Only use DNS, d: Store DNS answers in /etc/hosts}
+    options: {a: "Use DNS first and /etc/hosts as a fallback", b: "Look in /etc/hosts first then ask DNS", c: "Only use DNS", d: "Store DNS answers in /etc/hosts"}
     answer: b
     explanation: Sources are tried in order; files means /etc/hosts.
   - id: q2
     prompt: Which file tells the resolver which DNS server to ask?
-    options: {a: /etc/hosts, b: /etc/resolv.conf, c: /etc/hostname, d: /etc/dnsmasq.conf}
+    options: {a: "/etc/hosts", b: "/etc/resolv.conf", c: "/etc/hostname", d: "/etc/dnsmasq.conf"}
     answer: b
     explanation: nameserver lines in /etc/resolv.conf list DNS server IPs; dnsmasq.conf configures a DNS server, not the client.
   - id: q3
     prompt: With "search company.local" in resolv.conf, what does looking up db try?
-    options: {a: Only db, b: db.company.local as well, c: company.local.db, d: db.local}
+    options: {a: "Only db", b: "db.company.local as well", c: "company.local.db", d: "db.local"}
     answer: b
     explanation: Search domains are appended to short names, so db becomes db.company.local.
   - id: q4
     prompt: You added 10.0.0.9 web01 to /etc/hosts but dig web01 still shows the old address. Why?
-    options: {a: /etc/hosts needs a reboot, b: dig queries DNS directly and ignores /etc/hosts, c: The entry needs a trailing dot, d: dig caches answers for a day}
+    options: {a: "/etc/hosts needs a reboot", b: "dig queries DNS directly and ignores /etc/hosts", c: "The entry needs a trailing dot", d: "dig caches answers for a day"}
     answer: b
     explanation: dig, nslookup and host talk to DNS servers only. getent hosts web01 shows what applications get, including /etc/hosts.
   - id: q5
     prompt: Which DNS record type makes www an alias of web01?
-    options: {a: A, b: MX, c: CNAME, d: PTR}
+    options: {a: "A", b: "MX", c: "CNAME", d: "PTR"}
     answer: c
     explanation: A maps names to IPv4 addresses, MX names mail servers, PTR does reverse lookups; CNAME defines an alias.

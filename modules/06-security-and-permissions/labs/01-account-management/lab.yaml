@@ -1,0 +1,17 @@
+id: 06-security-and-permissions/account-management
+title: Rebuild the accounts on devbox
+runtime: docker
+services: [devbox]
+login: {service: devbox, user: root}
+minutes: 25
+tasks:
+  - id: t1
+    text: Create the user bob with UID 2000, login shell /bin/bash and home directory /home/bob (created and owned by bob).
+  - id: t2
+    text: Create the group devops and make bob a member of it (as a secondary group).
+  - id: t3
+    text: In /etc/sudoers.d/devops, allow members of devops to run /usr/bin/systemctl as root without a password — and nothing else.
+  - id: t4
+    text: Lock the password of the account intruder.
+  - id: t5
+    text: Remove intruder from the sudo group.

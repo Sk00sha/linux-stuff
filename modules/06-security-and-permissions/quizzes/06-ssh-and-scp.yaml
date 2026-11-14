@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/06-ssh-and-scp
+title: "Quiz: SSH and SCP"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which file on the server must contain your public key to allow key-based login?
+    options: {a: "~/.ssh/known_hosts", b: "~/.ssh/authorized_keys", c: "/etc/ssh/ssh_host_ed25519_key", d: "~/.ssh/id_ed25519"}
+    answer: b
+    explanation: authorized_keys in the target account's home lists the public keys allowed to log in. known_hosts stores server host keys on the client.
+  - id: q2
+    prompt: Which command copies your public key to app01 for user bob?
+    options: {a: "scp ~/.ssh/id_ed25519 bob@app01:", b: "ssh-copy-id bob@app01", c: "ssh-keygen bob@app01", d: "ssh-add bob@app01"}
+    answer: b
+    explanation: ssh-copy-id appends the public key to the remote authorized_keys and fixes its permissions. Never copy the private key.
+  - id: q3
+    prompt: Key login fails although the key is in authorized_keys. ~/.ssh on the server is mode 777. Why?
+    options: {a: "The key is too short", b: "sshd refuses keys when ~/.ssh is writable by others", c: "777 is required", d: "SSH needs a reboot"}
+    answer: b
+    explanation: StrictModes makes sshd ignore authorized_keys if the directory or file could be modified by other users. Use 700 and 600.
+  - id: q4
+    prompt: How do you copy the directory project to /srv on app01, preserving timestamps and modes?
+    options: {a: "scp project bob@app01:/srv", b: "scp -r -p project bob@app01:/srv/", c: "ssh -r project app01:/srv", d: "cp -r project app01:/srv"}
+    answer: b
+    explanation: -r copies recursively and -p preserves modification times and modes.
+  - id: q5
+    prompt: What should you do before setting PasswordAuthentication no on a remote server?
+    options: {a: "Delete known_hosts", b: "Confirm key-based login works in a separate session", c: "Reboot the server", d: "Remove all users"}
+    answer: b
+    explanation: Otherwise you may lock yourself out. Keep a working session open while changing and reloading sshd.

@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: What is the correct order of the boot stages?
-    options: {a: GRUB2 -> firmware -> systemd -> kernel, b: Firmware (BIOS/UEFI) -> GRUB2 -> kernel + initramfs -> systemd, c: Kernel -> firmware -> GRUB2 -> systemd, d: systemd -> kernel -> GRUB2 -> firmware}
+    options: {a: "GRUB2 -> firmware -> systemd -> kernel", b: "Firmware (BIOS/UEFI) -> GRUB2 -> kernel + initramfs -> systemd", c: "Kernel -> firmware -> GRUB2 -> systemd", d: "systemd -> kernel -> GRUB2 -> firmware"}
     answer: b
     explanation: Firmware runs POST and finds the boot loader; GRUB2 loads the kernel and initramfs; the kernel starts init, which is systemd.
   - id: q2
     prompt: What is the main job of the initramfs?
-    options: {a: To store user home directories, b: To provide drivers and tools needed to mount the real root filesystem, c: To show the GRUB menu, d: To run cron jobs at boot}
+    options: {a: "To store user home directories", b: "To provide drivers and tools needed to mount the real root filesystem", c: "To show the GRUB menu", d: "To run cron jobs at boot"}
     answer: b
     explanation: The kernel may lack built-in drivers for LVM, RAID or the disk controller; the initramfs contains them and mounts the real root.
   - id: q3
     prompt: Which process has PID 1 on a modern Linux distribution?
-    options: {a: bash, b: grub, c: systemd, d: kthreadd}
+    options: {a: "bash", b: "grub", c: "systemd", d: "kthreadd"}
     answer: c
     explanation: The kernel starts /sbin/init, which is systemd on Ubuntu, Rocky and most others; it is the ancestor of all user-space processes.
   - id: q4
     prompt: You want to change a GRUB setting permanently on Ubuntu. What do you do?
-    options: {a: Edit /boot/grub/grub.cfg directly, b: Edit /etc/default/grub and run sudo update-grub, c: Edit /proc/cmdline, d: Reinstall the kernel}
+    options: {a: "Edit /boot/grub/grub.cfg directly", b: "Edit /etc/default/grub and run sudo update-grub", c: "Edit /proc/cmdline", d: "Reinstall the kernel"}
     answer: b
     explanation: grub.cfg is generated; changes there are overwritten. /etc/default/grub is the source, and update-grub (grub2-mkconfig on Rocky) regenerates the config.
   - id: q5
     prompt: How can you tell whether the machine booted with UEFI?
-    options: {a: /sys/firmware/efi exists, b: uname -r ends in -efi, c: /etc/fstab mentions grub, d: free -m shows an EFI line}
+    options: {a: "/sys/firmware/efi exists", b: "uname -r ends in -efi", c: "/etc/fstab mentions grub", d: "free -m shows an EFI line"}
     answer: a
     explanation: The kernel creates /sys/firmware/efi only when it was started by UEFI firmware.

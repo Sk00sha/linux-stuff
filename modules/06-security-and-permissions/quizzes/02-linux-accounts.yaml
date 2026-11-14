@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/02-linux-accounts
+title: "Quiz: Linux Accounts"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: What UID does the root account have?
+    options: {a: "0", b: "1", c: "1000", d: "65534"}
+    answer: a
+    explanation: Root is always UID 0; the kernel grants it every permission. The name root is just a label for UID 0.
+  - id: q2
+    prompt: Which command shows a user's UID, primary group and all secondary groups?
+    options: {a: "who", b: "id", c: "last", d: "whoami"}
+    answer: b
+    explanation: id prints uid, gid and groups. whoami prints only the name, who and last show logins.
+  - id: q3
+    prompt: What is the main advantage of sudo over sharing the root password with su?
+    options: {a: "sudo is faster", b: "Each person uses their own password and every command is logged", c: "sudo works without a shell", d: "su cannot run commands"}
+    answer: b
+    explanation: sudo gives accountability and fine-grained rules; with a shared root password you cannot tell who did what.
+  - id: q4
+    prompt: An account has UID 33 and the shell /usr/sbin/nologin. What is it most likely?
+    options: {a: "A new employee", b: "A system account used to run a service", c: "The root account", d: "A locked administrator"}
+    answer: b
+    explanation: System accounts have low UIDs (below 1000 on most distributions) and a nologin shell, like www-data.
+  - id: q5
+    prompt: Which command shows the history of recent logins?
+    options: {a: "last", b: "w", c: "groups", d: "id -l"}
+    answer: a
+    explanation: last reads /var/log/wtmp to list past logins; w and who show current sessions.

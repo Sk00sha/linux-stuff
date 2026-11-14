@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/04-user-management
+title: "Quiz: User Management"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which command creates user alice with UID 2500, a home directory and Bash as shell?
+    options: {a: "useradd -u 2500 -m -s /bin/bash alice", b: "usermod -u 2500 alice", c: "adduser -2500 alice", d: "useradd alice -h /home/alice"}
+    answer: a
+    explanation: -u sets the UID, -m creates the home directory and -s sets the login shell.
+  - id: q2
+    prompt: You ran usermod -G docker bob. Afterwards bob can no longer use sudo. Why?
+    options: {a: "docker and sudo conflict", b: "Without -a, -G replaces all secondary groups, removing sudo", c: "usermod resets the password", d: "bob needs to reboot"}
+    answer: b
+    explanation: Always use usermod -aG to append a group.
+  - id: q3
+    prompt: Which command locks a user's password?
+    options: {a: "passwd -l USER", b: "passwd -d USER", c: "userdel USER", d: "chage -l USER"}
+    answer: a
+    explanation: passwd -l (like usermod -L) locks the password. -d deletes the password, which is the opposite of secure.
+  - id: q4
+    prompt: A locked account still logs in over SSH. What is the likely reason?
+    options: {a: "Locking takes 24 hours", b: "Locking blocks only password authentication; the user has an SSH key", c: "SSH ignores /etc/passwd", d: "The account is root"}
+    answer: b
+    explanation: To block all logins also expire the account (usermod -e 1 or chage -E 0) or set the shell to nologin.
+  - id: q5
+    prompt: Which command removes user tess and her home directory?
+    options: {a: "userdel tess", b: "userdel -r tess", c: "groupdel tess", d: "rm /home/tess"}
+    answer: b
+    explanation: -r removes the home directory and mail spool too. rm alone would leave the account in place.

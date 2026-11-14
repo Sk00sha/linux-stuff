@@ -4,17 +4,17 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: Which command tells you which installed package owns /usr/bin/wget?
-    options: {a: rpm -ql wget, b: rpm -qf /usr/bin/wget, c: rpm -e /usr/bin/wget, d: dnf repolist wget}
+    options: {a: "rpm -ql wget", b: "rpm -qf /usr/bin/wget", c: "rpm -e /usr/bin/wget", d: "dnf repolist wget"}
     answer: b
     explanation: rpm -qf queries the database for the package owning a file. -ql does the reverse (files of a package).
   - id: q2
     prompt: rpm -ivh tool.rpm fails with "Failed dependencies". What is the best way to install it?
-    options: {a: rpm -ivh --force tool.rpm, b: sudo dnf install ./tool.rpm, c: Copy the files manually, d: rpm -e tool.rpm}
+    options: {a: "rpm -ivh --force tool.rpm", b: "sudo dnf install ./tool.rpm", c: "Copy the files manually", d: "rpm -e tool.rpm"}
     answer: b
     explanation: dnf installs a local file and resolves its dependencies from the enabled repositories. Forcing would leave a broken install.
   - id: q3
     prompt: How do you remove the installed package tree with rpm?
-    options: {a: rpm -e tree, b: rpm -e tree.rpm, c: rpm -r tree, d: rpm -d tree}
+    options: {a: "rpm -e tree", b: "rpm -e tree.rpm", c: "rpm -r tree", d: "rpm -d tree"}
     answer: a
     explanation: rpm -e (erase) takes the installed package name, not a file name.
   - id: q4
@@ -24,6 +24,6 @@ questions:
     explanation: A file URL is file:// followed by an absolute path, giving three slashes. With two slashes, opt would be read as a host name.
   - id: q5
     prompt: On Rocky Linux 9, what is yum?
-    options: {a: An unrelated older tool that conflicts with dnf, b: A compatibility name for dnf, c: The low-level package tool, d: A repository}
+    options: {a: "An unrelated older tool that conflicts with dnf", b: "A compatibility name for dnf", c: "The low-level package tool", d: "A repository"}
     answer: b
     explanation: Since RHEL 8 the package manager is dnf and yum is an alias for it, so yum install and dnf install behave the same.

@@ -9,21 +9,21 @@ questions:
     explanation: 32 - 24 = 8 host bits, 2^8 = 256 addresses, of which 254 are usable for hosts.
   - id: q2
     prompt: Which command adds a route to 10.10.2.0/24 through the router 10.10.1.254?
-    options: {a: sudo ip route add 10.10.2.0/24 via 10.10.1.254, b: sudo ip addr add 10.10.2.0/24 dev 10.10.1.254, c: sudo route 10.10.1.254 10.10.2.0, d: sudo ip link add 10.10.2.0/24}
+    options: {a: "sudo ip route add 10.10.2.0/24 via 10.10.1.254", b: "sudo ip addr add 10.10.2.0/24 dev 10.10.1.254", c: "sudo route 10.10.1.254 10.10.2.0", d: "sudo ip link add 10.10.2.0/24"}
     answer: a
     explanation: ip route add DEST via GATEWAY. ip addr assigns addresses to interfaces; it doesn't route.
   - id: q3
     prompt: What is the default gateway?
-    options: {a: The DNS server, b: The next hop used for destinations that no more specific route matches, c: The first host in every subnet, d: The machine's own IP}
+    options: {a: "The DNS server", b: "The next hop used for destinations that no more specific route matches", c: "The first host in every subnet", d: "The machine's own IP"}
     answer: b
     explanation: The default route (0.0.0.0/0) matches everything; its next hop is the default gateway.
   - id: q4
     prompt: A Linux box with two network interfaces should route between them. Which setting must be 1?
-    options: {a: net.ipv4.ip_forward, b: net.ipv4.tcp_syncookies, c: kernel.hostname, d: vm.swappiness}
+    options: {a: "net.ipv4.ip_forward", b: "net.ipv4.tcp_syncookies", c: "kernel.hostname", d: "vm.swappiness"}
     answer: a
     explanation: net.ipv4.ip_forward (/proc/sys/net/ipv4/ip_forward) enables forwarding packets between interfaces.
   - id: q5
     prompt: You added a route with ip route add. What happens after a reboot?
-    options: {a: It stays forever, b: It is gone; persist it with netplan or NetworkManager configuration, c: It becomes the default route, d: It is copied into /etc/hosts}
+    options: {a: "It stays forever", b: "It is gone; persist it with netplan or NetworkManager configuration", c: "It becomes the default route", d: "It is copied into /etc/hosts"}
     answer: b
     explanation: ip changes only affect the running kernel. Ubuntu persists network config in /etc/netplan, Rocky via NetworkManager (nmcli).

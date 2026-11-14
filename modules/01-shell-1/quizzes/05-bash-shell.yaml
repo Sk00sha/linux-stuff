@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: You ran project=mercury and then started a new program. The program cannot see $project. Why?
-    options: {a: Variables can only hold numbers, b: It is a shell variable; it must be exported to reach child programs, c: The variable name needs to be in capital letters, d: You need to reboot}
+    options: {a: "Variables can only hold numbers", b: "It is a shell variable; it must be exported to reach child programs", c: "The variable name needs to be in capital letters", d: "You need to reboot"}
     answer: b
     explanation: Only exported (environment) variables are passed to child processes. export project fixes it.
   - id: q2
     prompt: Which line correctly adds /opt/tools/bin to the command search path for the current shell?
-    options: {a: export PATH=/opt/tools/bin, b: "export PATH=\"$PATH:/opt/tools/bin\"", c: PATH = $PATH:/opt/tools/bin, d: export /opt/tools/bin}
+    options: {a: "export PATH=/opt/tools/bin", b: "export PATH=\"$PATH:/opt/tools/bin\"", c: "PATH = $PATH:/opt/tools/bin", d: "export /opt/tools/bin"}
     answer: b
     explanation: Append to the existing value. Option a replaces PATH and hides /usr/bin; option c has spaces around = so Bash tries to run a command called PATH.
   - id: q3
     prompt: Where should a personal alias go so that it is available in every new interactive Bash shell?
-    options: {a: ~/.bashrc, b: /etc/hostname, c: ~/.bash_history, d: /tmp/aliases}
+    options: {a: "~/.bashrc", b: "/etc/hostname", c: "~/.bash_history", d: "/tmp/aliases"}
     answer: a
     explanation: ~/.bashrc is read by every interactive non-login shell; on Ubuntu ~/.profile also sources it for login shells.
   - id: q4
     prompt: In PS1, what does \W expand to?
-    options: {a: The full path of the current directory, b: Only the last component of the current directory, c: The user name, d: The weekday}
+    options: {a: "The full path of the current directory", b: "Only the last component of the current directory", c: "The user name", d: "The weekday"}
     answer: b
     explanation: \w is the full working directory (with ~ for home); \W is just its basename, e.g. etc for /etc.
   - id: q5
     prompt: You just edited ~/.bashrc. How do you apply the changes to the shell you are already in?
-    options: {a: source ~/.bashrc, b: chmod +x ~/.bashrc, c: bash --reload, d: export ~/.bashrc}
+    options: {a: "source ~/.bashrc", b: "chmod +x ~/.bashrc", c: "bash --reload", d: "export ~/.bashrc"}
     answer: a
     explanation: source (or .) runs the file in the current shell. Starting a new shell also works; the other options do not exist or don't help.

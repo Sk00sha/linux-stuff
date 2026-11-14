@@ -1,0 +1,13 @@
+id: 06-security-and-permissions/cronjob
+title: Schedule the nightly clean-up
+runtime: docker
+services: [devbox]
+login: {service: devbox, user: bob}
+minutes: 15
+tasks:
+  - id: t1
+    text: In bob's own crontab, schedule /opt/scripts/cleanup.sh to run every day at 21:00.
+  - id: t2
+    text: Make the job append both its output and its errors to /home/bob/cleanup.log.
+  - id: t3
+    text: Someone scheduled the clean-up in root's crontab, every minute. Remove that entry (and only that one) from root's crontab.

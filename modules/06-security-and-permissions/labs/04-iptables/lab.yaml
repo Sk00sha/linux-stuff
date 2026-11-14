@@ -1,0 +1,17 @@
+id: 06-security-and-permissions/iptables
+title: Firewall app01 and db01
+runtime: docker
+services: [devbox, app01, db01]
+login: {service: devbox, user: bob}
+minutes: 35
+tasks:
+  - id: t1
+    text: On app01, allow SSH (22/tcp) only from devbox (10.10.2.10).
+  - id: t2
+    text: On app01, allow HTTP (80/tcp) from anywhere.
+  - id: t3
+    text: On app01, drop all other inbound traffic — while app01 can still open connections to db01:5432.
+  - id: t4
+    text: On db01, allow PostgreSQL (5432/tcp) only from app01 (10.10.2.30).
+  - id: t5
+    text: On db01, allow SSH only from devbox and drop all other inbound traffic.

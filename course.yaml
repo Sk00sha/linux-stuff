@@ -89,3 +89,31 @@ modules:
       - {type: lesson, path: modules/05-networking/lessons/04-troubleshooting.md, minutes: 20}
       - {type: quiz,   path: modules/05-networking/quizzes/04-troubleshooting.yaml}
       - {type: lab,    path: modules/05-networking/labs/03-troubleshooting}
+
+  - id: 06-security-and-permissions
+    title: Security and File Permissions
+    runtime: docker
+    items:
+      - {type: story,  path: modules/06-security-and-permissions/00-story.md}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/01-security-incident.md, minutes: 5}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/02-linux-accounts.md, minutes: 15}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/02-linux-accounts.yaml}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/03-access-control-files.md, minutes: 15}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/03-access-control-files.yaml}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/04-user-management.md, minutes: 15}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/04-user-management.yaml}
+      - {type: lab,    path: modules/06-security-and-permissions/labs/01-account-management}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/05-file-permissions-and-ownership.md, minutes: 20}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/05-file-permissions-and-ownership.yaml}
+      - {type: lab,    path: modules/06-security-and-permissions/labs/02-permissions-and-ownership}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/06-ssh-and-scp.md, minutes: 20}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/06-ssh-and-scp.yaml}
+      - {type: lab,    path: modules/06-security-and-permissions/labs/03-ssh-and-scp}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/07-iptables-introduction.md, minutes: 20}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/07-iptables-introduction.yaml}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/08-iptables-securing-the-environment.md, minutes: 20}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/08-iptables-securing-the-environment.yaml}
+      - {type: lab,    path: modules/06-security-and-permissions/labs/04-iptables}
+      - {type: lesson, path: modules/06-security-and-permissions/lessons/09-cronjobs.md, minutes: 15}
+      - {type: quiz,   path: modules/06-security-and-permissions/quizzes/09-cronjobs.yaml}
+      - {type: lab,    path: modules/06-security-and-permissions/labs/05-cronjob}

@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: Where are system-wide configuration files kept?
-    options: {a: /usr, b: /etc, c: /var, d: /opt}
+    options: {a: "/usr", b: "/etc", c: "/var", d: "/opt"}
     answer: b
     explanation: /etc holds host-specific configuration as text files.
   - id: q2
     prompt: A service keeps failing because its disk is full of logs. Which directory most likely filled up?
-    options: {a: /var, b: /boot, c: /etc, d: /dev}
+    options: {a: "/var", b: "/boot", c: "/etc", d: "/dev"}
     answer: a
     explanation: /var holds variable data that grows — logs in /var/log, caches, spools and databases under /var/lib.
   - id: q3
     prompt: Where should a vendor's self-contained application bundle be installed?
-    options: {a: /tmp, b: /opt, c: /proc, d: /root}
+    options: {a: "/tmp", b: "/opt", c: "/proc", d: "/root"}
     answer: b
     explanation: /opt is for add-on application packages, one subdirectory each. /usr/local is for locally built software.
   - id: q4
     prompt: What is /root?
-    options: {a: The top of the filesystem tree, b: The home directory of the root user, c: A link to /boot, d: The directory for kernel modules}
+    options: {a: "The top of the filesystem tree", b: "The home directory of the root user", c: "A link to /boot", d: "The directory for kernel modules"}
     answer: b
     explanation: The top of the tree is /. /root is the administrator's home directory.
   - id: q5
     prompt: On a Rocky Linux server, where is the main traditional system log?
-    options: {a: /var/log/syslog, b: /var/log/messages, c: /etc/log, d: /tmp/system.log}
+    options: {a: "/var/log/syslog", b: "/var/log/messages", c: "/etc/log", d: "/tmp/system.log"}
     answer: b
     explanation: The Red Hat family writes to /var/log/messages; Debian and Ubuntu use /var/log/syslog. journalctl works on both.

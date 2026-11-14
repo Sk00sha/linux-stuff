@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/03-access-control-files
+title: "Quiz: Access Control Files"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Why are password hashes stored in /etc/shadow instead of /etc/passwd?
+    options: {a: "/etc/passwd is too small", b: "/etc/passwd must be world-readable; /etc/shadow is readable only by root so hashes can't be copied and cracked", c: "/etc/shadow is encrypted by the kernel", d: "Only Rocky uses /etc/shadow"}
+    answer: b
+    explanation: Programs need to read /etc/passwd to map UIDs to names; separating the hashes keeps them away from ordinary users.
+  - id: q2
+    prompt: In /etc/passwd, what is the seventh field?
+    options: {a: "The home directory", b: "The login shell", c: "The UID", d: "The password hash"}
+    answer: b
+    explanation: "name:x:UID:GID:comment:home:shell — the shell is last."
+  - id: q3
+    prompt: A /etc/shadow entry starts with bob:!$6$... What does the leading ! mean?
+    options: {a: "The password is empty", b: "The account's password is locked", c: "The password never expires", d: "Bob is an administrator"}
+    answer: b
+    explanation: passwd -l (or usermod -L) prefixes the hash with !, so no password matches; unlocking removes it.
+  - id: q4
+    prompt: How should you add a sudo rule for a group?
+    options: {a: "Edit /etc/sudoers with nano", b: "Run sudo visudo -f /etc/sudoers.d/devops", c: "Append to /etc/group", d: "chmod 777 /etc/sudoers"}
+    answer: b
+    explanation: visudo checks the syntax before saving; drop-in files in /etc/sudoers.d are not touched by package updates.
+  - id: q5
+    prompt: What does the rule "%devops ALL=(root) NOPASSWD:/usr/bin/systemctl" allow?
+    options: {a: "Members of devops may run any command as root", b: "Members of devops may run systemctl as root without a password", c: "The user devops may log in without a password", d: "Root may run systemctl as devops"}
+    answer: b
+    explanation: "% marks a group; (root) is the target user; NOPASSWD: skips the password prompt; the command list contains only systemctl."

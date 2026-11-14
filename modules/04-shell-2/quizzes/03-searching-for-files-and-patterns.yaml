@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: Which command finds regular files bigger than 100 MiB under /var?
-    options: {a: find /var -type f -size +100M, b: find /var -size 100M, c: locate -size +100M /var, d: grep -r 100M /var}
+    options: {a: "find /var -type f -size +100M", b: "find /var -size 100M", c: "locate -size +100M /var", d: "grep -r 100M /var"}
     answer: a
     explanation: -size +100M means larger than 100 MiB; without the plus sign it means exactly that size (rounded).
   - id: q2
     prompt: You created report.txt a minute ago, but locate report.txt finds nothing. Why?
-    options: {a: locate only finds directories, b: locate searches a database that hasn't been updated since the file was created, c: The file is hidden, d: locate needs the full path}
+    options: {a: "locate only finds directories", b: "locate searches a database that hasn't been updated since the file was created", c: "The file is hidden", d: "locate needs the full path"}
     answer: b
     explanation: locate reads a database refreshed by updatedb (usually daily). Run sudo updatedb or use find.
   - id: q3
     prompt: Which grep prints lines containing error, Error or ERROR?
-    options: {a: grep -v error, b: grep -i error, c: grep -w ERROR, d: grep -c error}
+    options: {a: "grep -v error", b: "grep -i error", c: "grep -w ERROR", d: "grep -c error"}
     answer: b
     explanation: -i ignores case. -v inverts the match, -w requires whole words and -c only counts.
   - id: q4
-    prompt: "What does find . -name '*.tmp' -exec rm {} \; do?"
-    options: {a: Lists .tmp files, b: Deletes every file whose name ends in .tmp below the current directory, c: Renames .tmp files, d: Nothing, the syntax is invalid}
+    prompt: 'What does find . -name ''*.tmp'' -exec rm {} \; do?'
+    options: {a: "Lists .tmp files", b: "Deletes every file whose name ends in .tmp below the current directory", c: "Renames .tmp files", d: "Nothing, the syntax is invalid"}
     answer: b
     explanation: -exec runs rm once for each match, with {} replaced by the path; \; ends the command. Run it without -exec first to check the list.
   - id: q5
     prompt: Which command shows each match in app.log plus the two lines after it?
-    options: {a: grep -B2 FAIL app.log, b: grep -A2 FAIL app.log, c: grep -n2 FAIL app.log, d: grep -l FAIL app.log}
+    options: {a: "grep -B2 FAIL app.log", b: "grep -A2 FAIL app.log", c: "grep -n2 FAIL app.log", d: "grep -l FAIL app.log"}
     answer: b
     explanation: -A N prints N lines After each match, -B Before, -C around.

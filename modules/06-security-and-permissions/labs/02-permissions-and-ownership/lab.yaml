@@ -1,0 +1,19 @@
+id: 06-security-and-permissions/permissions-and-ownership
+title: Lock down the Mercury project tree
+runtime: docker
+services: [devbox]
+login: {service: devbox, user: bob}
+minutes: 25
+tasks:
+  - id: t1
+    text: /srv/mercury/app and everything below it must be owned by user bob and group devops.
+  - id: t2
+    text: /srv/mercury/app/config/db.conf must be readable and writable by its owner, readable by its group, and inaccessible to others (640).
+  - id: t3
+    text: /srv/mercury/app/bin/deploy.sh must be executable by its owner and group, and inaccessible to others (750).
+  - id: t4
+    text: /srv/mercury/app itself must be 770 with the setgid bit set (2770), so new files inherit the devops group.
+  - id: t5
+    text: Set the sticky bit on /srv/shared (mode 1777) so users can no longer delete each other's files.
+  - id: t6
+    text: No file or directory below /srv/mercury may be writable by others.

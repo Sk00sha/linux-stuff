@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: An ls -l line starts with b. What kind of file is it?
-    options: {a: A binary program, b: A block device such as a disk, c: A backup file, d: A broken symbolic link}
+    options: {a: "A binary program", b: "A block device such as a disk", c: "A backup file", d: "A broken symbolic link"}
     answer: b
     explanation: b marks block devices (disks, partitions, loop devices); c marks character devices such as /dev/null.
   - id: q2
     prompt: What happens to a symbolic link when its target file is deleted?
-    options: {a: The link is deleted too, b: The link keeps the data, c: The link remains but is dangling and points to nothing, d: The target is restored}
+    options: {a: "The link is deleted too", b: "The link keeps the data", c: "The link remains but is dangling and points to nothing", d: "The target is restored"}
     answer: c
     explanation: A symlink stores only a path. Remove the target and the link breaks; a hard link would still reach the data.
   - id: q3
     prompt: Which command creates a symbolic link called latest pointing to /var/log/syslog?
-    options: {a: ln /var/log/syslog latest, b: ln -s latest /var/log/syslog, c: ln -s /var/log/syslog latest, d: cp -s latest /var/log/syslog}
+    options: {a: "ln /var/log/syslog latest", b: "ln -s latest /var/log/syslog", c: "ln -s /var/log/syslog latest", d: "cp -s latest /var/log/syslog"}
     answer: c
     explanation: The order is ln -s TARGET LINKNAME. Without -s, ln creates a hard link.
   - id: q4
     prompt: Which command looks inside a file and reports what kind of content it has?
-    options: {a: file, b: type, c: which, d: whatis}
+    options: {a: "file", b: "type", c: "which", d: "whatis"}
     answer: a
     explanation: file examines the content (and metadata) and reports e.g. ASCII text, ELF executable or fifo (named pipe). Extensions mean nothing to Linux.
   - id: q5
     prompt: "cat events hangs and prints nothing. ls -l shows prw-r--r--. Why?"
-    options: {a: The file is very large, b: It is a named pipe and cat waits for a writer, c: The disk is full, d: It is a socket that needs a password}
+    options: {a: "The file is very large", b: "It is a named pipe and cat waits for a writer", c: "The disk is full", d: "It is a socket that needs a password"}
     answer: b
     explanation: p means named pipe (FIFO). Reading blocks until another process writes into it.

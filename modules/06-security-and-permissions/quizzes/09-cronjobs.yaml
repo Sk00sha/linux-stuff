@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/09-cronjobs
+title: "Quiz: Cron Jobs"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which crontab line runs a job every day at 21:00?
+    options: {a: "21 0 * * * /job.sh", b: "0 21 * * * /job.sh", c: "* 21 * * * /job.sh", d: "0 9pm * * * /job.sh"}
+    answer: b
+    explanation: The fields are minute hour day-of-month month day-of-week, so 0 21 means 21:00. "* 21" would run every minute of that hour.
+  - id: q2
+    prompt: What does */15 in the minute field mean?
+    options: {a: "At minute 15 only", b: "Every 15 minutes", c: "15 times per hour", d: "Between minute 1 and 15"}
+    answer: b
+    explanation: "*/n means every n units: minutes 0, 15, 30 and 45."
+  - id: q3
+    prompt: As root, how do you list bob's crontab?
+    options: {a: "crontab -l bob", b: "crontab -u bob -l", c: "cat /etc/crontab", d: "cron -l bob"}
+    answer: b
+    explanation: -u selects the user (root only) and -l lists.
+  - id: q4
+    prompt: How does a line in /etc/cron.d/ differ from a line in a user crontab?
+    options: {a: "It has a sixth field naming the user to run as", b: "It has no time fields", c: "It must use @daily", d: "It runs only at boot"}
+    answer: a
+    explanation: System crontab files (/etc/crontab, /etc/cron.d/*) include a user field before the command.
+  - id: q5
+    prompt: A script works in your shell but fails in cron with "command not found". What is the likely cause?
+    options: {a: "Cron is not installed", b: "Cron runs with a minimal PATH and without your ~/.bashrc", c: "The script is too long", d: "Cron only runs binaries"}
+    answer: b
+    explanation: Use absolute paths or set PATH at the top of the crontab, and redirect output to a log to see such errors.

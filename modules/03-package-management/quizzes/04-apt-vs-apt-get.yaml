@@ -4,16 +4,16 @@ pass_mark: 0.66
 questions:
   - id: q1
     prompt: You are writing a Dockerfile. Which command should install packages?
-    options: {a: apt install -y curl, b: apt-get install -y curl, c: dpkg -i curl, d: apt search curl}
+    options: {a: "apt install -y curl", b: "apt-get install -y curl", c: "dpkg -i curl", d: "apt search curl"}
     answer: b
     explanation: apt-get has a stable, script-friendly interface; apt is designed for interactive use and warns in scripts.
   - id: q2
     prompt: Do apt and apt-get use different package databases?
-    options: {a: Yes, each keeps its own, b: No, they share the same repositories, cache and dpkg database, c: Only on Rocky Linux, d: Only for removed packages}
+    options: {a: "Yes, each keeps its own", b: "No, they share the same repositories, cache and dpkg database", c: "Only on Rocky Linux", d: "Only for removed packages"}
     answer: b
     explanation: They are two front ends to the same APT system, so you can mix them.
   - id: q3
     prompt: Which classic command is equivalent to apt show nginx?
-    options: {a: apt-get show nginx, b: apt-cache show nginx, c: dpkg -S nginx, d: apt-get info nginx}
+    options: {a: "apt-get show nginx", b: "apt-cache show nginx", c: "dpkg -S nginx", d: "apt-get info nginx"}
     answer: b
     explanation: apt combined apt-get (install/remove) and apt-cache (search/show) into one command.

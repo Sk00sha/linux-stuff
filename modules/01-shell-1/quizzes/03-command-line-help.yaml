@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: Which command prints a one-line description of ls?
-    options: {a: whatis ls, b: help ls, c: info --short ls, d: ls --about}
+    options: {a: "whatis ls", b: "help ls", c: "info --short ls", d: "ls --about"}
     answer: a
     explanation: whatis shows the NAME line of the manual page. help is for shell builtins and there is no --about option.
   - id: q2
     prompt: You want the manual page describing the format of the /etc/passwd file, not the passwd command. What do you run?
-    options: {a: man passwd, b: man 5 passwd, c: man 1 passwd, d: passwd --help}
+    options: {a: "man passwd", b: "man 5 passwd", c: "man 1 passwd", d: "passwd --help"}
     answer: b
     explanation: Section 5 of the manual documents file formats. man passwd shows the first match, which is the command in section 1.
   - id: q3
     prompt: You need a command for deleting a group but don't know its name. Which tool searches man page descriptions by keyword?
-    options: {a: whatis, b: which, c: apropos, d: type}
+    options: {a: "whatis", b: "which", c: "apropos", d: "type"}
     answer: c
     explanation: apropos (equivalent to man -k) searches the one-line descriptions of all manual pages; for example apropos -s 8 group.
   - id: q4
     prompt: How do you get help for the cd builtin?
-    options: {a: man cd, b: help cd, c: cd --manual, d: info cd}
+    options: {a: "man cd", b: "help cd", c: "cd --manual", d: "info cd"}
     answer: b
     explanation: Builtins are part of Bash itself and usually have no separate man page; Bash documents them with the help builtin.
   - id: q5
     prompt: You are reading a man page. Which key exits the pager?
-    options: {a: Esc, b: Ctrl+X, c: q, d: ":wq"}
+    options: {a: "Esc", b: "Ctrl+X", c: "q", d: ":wq"}
     answer: c
     explanation: man uses less as its pager, where q quits. /word searches and n jumps to the next match.

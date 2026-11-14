@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/07-iptables-introduction
+title: "Quiz: IPTABLES Introduction"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which chain of the filter table handles packets addressed to the local machine?
+    options: {a: "OUTPUT", b: "INPUT", c: "FORWARD", d: "PREROUTING"}
+    answer: b
+    explanation: INPUT is for incoming packets destined for local processes. FORWARD is for packets passing through; OUTPUT for locally generated ones.
+  - id: q2
+    prompt: The INPUT chain has rule 1 DROP tcp dport 80 and rule 2 ACCEPT tcp dport 80 from 10.0.0.5. What happens to HTTP from 10.0.0.5?
+    options: {a: "Accepted because rule 2 is more specific", b: "Dropped because rule 1 matches first", c: "Accepted because ACCEPT always wins", d: "It depends on the policy"}
+    answer: b
+    explanation: Rules are evaluated top to bottom and the first matching terminating rule decides. Insert the ACCEPT above with -I.
+  - id: q3
+    prompt: What is the difference between DROP and REJECT?
+    options: {a: "There is none", b: "DROP discards silently (sender times out); REJECT discards and sends an error (sender sees refused)", c: "REJECT logs and DROP does not", d: "DROP only works for UDP"}
+    answer: b
+    explanation: DROP gives no feedback; REJECT replies with an ICMP error or TCP reset.
+  - id: q4
+    prompt: Which command lists the rules with numeric addresses and rule numbers?
+    options: {a: "iptables -F", b: "iptables -L -n --line-numbers", c: "iptables -P INPUT", d: "iptables -D INPUT"}
+    answer: b
+    explanation: -L lists, -n avoids DNS lookups and --line-numbers shows positions for -I and -D.
+  - id: q5
+    prompt: On Ubuntu 24.04, iptables -V prints "(nf_tables)". What does it mean?
+    options: {a: "iptables is broken", b: "The iptables command is configuring the newer nftables backend in the kernel", c: "Rules are stored in a database", d: "Only IPv6 is supported"}
+    answer: b
+    explanation: Modern distributions translate iptables syntax onto nftables; the concepts and commands still apply.

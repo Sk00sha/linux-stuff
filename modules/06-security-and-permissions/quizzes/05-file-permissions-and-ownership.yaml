@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/05-file-permissions-and-ownership
+title: "Quiz: File Permissions and Ownership"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: What permissions does mode 640 give?
+    options: {a: "owner rw, group r, others none", b: "owner rwx, group rw, others none", c: "owner r, group rw, others none", d: "everyone read and write"}
+    answer: a
+    explanation: 6 = 4+2 (rw), 4 = r, 0 = nothing.
+  - id: q2
+    prompt: Which command makes deploy.sh executable for its owner only, leaving other bits alone?
+    options: {a: "chmod 777 deploy.sh", b: "chmod u+x deploy.sh", c: "chown +x deploy.sh", d: "chmod a+x deploy.sh"}
+    answer: b
+    explanation: Symbolic mode u+x adds execute for the user (owner) class only. a+x would add it for everyone.
+  - id: q3
+    prompt: Which command makes bob the owner and devops the group of app.conf?
+    options: {a: "chmod bob:devops app.conf", b: "sudo chown bob:devops app.conf", c: "chgrp bob app.conf", d: "sudo chown devops:bob app.conf"}
+    answer: b
+    explanation: chown USER:GROUP FILE; only root can give a file to another user.
+  - id: q4
+    prompt: On a shared directory, everyone can create files, but users keep deleting each other's files. Which bit fixes this?
+    options: {a: "setuid", b: "setgid", c: "sticky", d: "execute"}
+    answer: c
+    explanation: The sticky bit (chmod +t, e.g. mode 1777 like /tmp) lets only a file's owner or root delete or rename it.
+  - id: q5
+    prompt: With umask 0022, which permissions does a newly created regular file get?
+    options: {a: "777", b: "755", c: "644", d: "600"}
+    answer: c
+    explanation: Files start from 666; removing the 022 bits leaves 644. Directories start from 777 and become 755.

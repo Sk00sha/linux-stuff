@@ -1,0 +1,29 @@
+id: 06-security-and-permissions/08-iptables-securing-the-environment
+title: "Quiz: IPTABLES — Securing the Environment"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: After setting iptables -P INPUT DROP with rules allowing only SSH and HTTP, the server can no longer download updates. What rule is missing?
+    options: {a: "-A INPUT -p tcp --dport 443 -j ACCEPT", b: "-A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT", c: "-A OUTPUT -j DROP", d: "-P FORWARD ACCEPT"}
+    answer: b
+    explanation: Replies to the server's own outgoing connections arrive on INPUT and are dropped without a connection-tracking rule.
+  - id: q2
+    prompt: You are logged in over SSH. In what order should you apply a new default-deny policy?
+    options: {a: "Set the DROP policy first then add rules", b: "Add ACCEPT rules (including SSH) first then set the DROP policy", c: "Flush all chains and reboot", d: "Order does not matter"}
+    answer: b
+    explanation: Changing the policy first drops your own SSH session.
+  - id: q3
+    prompt: Which rule allows PostgreSQL only from app01 at 10.10.2.30?
+    options: {a: "-A INPUT -p tcp --dport 5432 -j ACCEPT", b: "-A INPUT -p tcp --dport 5432 -s 10.10.2.30 -j ACCEPT", c: "-A OUTPUT -p tcp --sport 5432 -d 10.10.2.30 -j ACCEPT", d: "-A INPUT -s 5432 -p 10.10.2.30 -j ACCEPT"}
+    answer: b
+    explanation: -s restricts the source address; combined with a DROP policy, everyone else is blocked.
+  - id: q4
+    prompt: Why should a default-deny INPUT chain accept traffic on the lo interface?
+    options: {a: "It is required by SSH", b: "Local programs communicate over loopback and would otherwise break", c: "lo is the internet interface", d: "To allow ping"}
+    answer: b
+    explanation: Many services (and local DNS resolvers) talk over 127.0.0.1; dropping lo causes confusing failures.
+  - id: q5
+    prompt: How do you make iptables rules survive a reboot on Ubuntu?
+    options: {a: "They survive automatically", b: "Save them with iptables-save to /etc/iptables/rules.v4 and use iptables-persistent", c: "Put them in /etc/hosts", d: "Run iptables -P SAVE"}
+    answer: b
+    explanation: Rules live in kernel memory; iptables-persistent restores the saved file at boot. Rocky uses iptables-services or firewalld.

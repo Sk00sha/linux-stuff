@@ -4,26 +4,26 @@ pass_mark: 0.7
 questions:
   - id: q1
     prompt: Which command prints your current working directory?
-    options: {a: cd, b: pwd, c: ls, d: echo $HOME}
+    options: {a: "cd", b: "pwd", c: "ls", d: "echo $HOME"}
     answer: b
     explanation: pwd means "print working directory". $HOME is your home directory, which is not necessarily where you are right now.
   - id: q2
     prompt: Your prompt reads root@web01:/var/log#. What does the final # tell you?
-    options: {a: The directory is a comment, b: You are logged in as the root (administrator) account, c: The previous command failed, d: You are inside a script}
+    options: {a: "The directory is a comment", b: "You are logged in as the root (administrator) account", c: "The previous command failed", d: "You are inside a script"}
     answer: b
     explanation: By convention Bash ends the prompt with # for root and $ for ordinary users, so you can see at a glance when commands run with full privileges.
   - id: q3
     prompt: You are in /home/bob. Which path refers to the same place as /home/bob/projects/app?
-    options: {a: /projects/app, b: ./projects/app, c: ../projects/app, d: ~/app}
+    options: {a: "/projects/app", b: "./projects/app", c: "../projects/app", d: "~/app"}
     answer: b
     explanation: A relative path is interpreted from the current directory, so ./projects/app (or simply projects/app) means /home/bob/projects/app. A leading / would start from the root instead.
   - id: q4
     prompt: In the command "ls -l /etc", what is -l?
-    options: {a: The command, b: An option that changes how ls behaves, c: The directory to list, d: A shell variable}
+    options: {a: "The command", b: "An option that changes how ls behaves", c: "The directory to list", d: "A shell variable"}
     answer: b
     explanation: The first word is the command (ls); words starting with a dash are options; /etc is an ordinary argument naming what to list.
   - id: q5
     prompt: Which statement about the terminal and the shell is correct?
-    options: {a: They are two names for the same program, b: The terminal displays text and passes keystrokes; the shell interprets and runs the commands, c: The shell draws the window and the terminal runs commands, d: A terminal can only run Bash}
+    options: {a: "They are two names for the same program", b: "The terminal displays text and passes keystrokes; the shell interprets and runs the commands", c: "The shell draws the window and the terminal runs commands", d: "A terminal can only run Bash"}
     answer: b
     explanation: A terminal (emulator) is the window or console; the shell — Bash, Zsh, dash and so on — is the program inside it that reads and executes commands.

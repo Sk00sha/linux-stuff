@@ -9,21 +9,21 @@ questions:
     explanation: 0 is stdin, 1 is stdout, 2 is stderr.
   - id: q2
     prompt: Which command sends normal output to out.log and errors to err.log?
-    options: {a: ./run.sh > out.log 2> err.log, b: ./run.sh 2> out.log > err.log, c: ./run.sh | out.log | err.log, d: ./run.sh >> out.log 2>&1}
+    options: {a: "./run.sh > out.log 2> err.log", b: "./run.sh 2> out.log > err.log", c: "./run.sh | out.log | err.log", d: "./run.sh >> out.log 2>&1"}
     answer: a
     explanation: '> redirects stdout (fd 1) and 2> redirects stderr. The last option sends both streams to out.log.'
   - id: q3
     prompt: What is the effect of >> compared to >?
-    options: {a: It redirects stderr, b: It appends to the file instead of overwriting it, c: It reads from the file, d: It creates a pipe}
+    options: {a: "It redirects stderr", b: "It appends to the file instead of overwriting it", c: "It reads from the file", d: "It creates a pipe"}
     answer: b
     explanation: '> truncates the file first; >> adds to the end.'
   - id: q4
     prompt: Why does "sudo echo hello > /etc/motd" fail with Permission denied for a normal user?
-    options: {a: echo cannot be run with sudo, b: The redirection is performed by the user's own shell, not by sudo, c: /etc/motd is a directory, d: sudo is not installed}
+    options: {a: "echo cannot be run with sudo", b: "The redirection is performed by the user's own shell, not by sudo", c: "/etc/motd is a directory", d: "sudo is not installed"}
     answer: b
     explanation: The shell opens /etc/motd before running sudo. echo hello | sudo tee /etc/motd performs the write as root.
   - id: q5
     prompt: How do you run a noisy command but hide only its error messages?
-    options: {a: cmd > /dev/null, b: cmd 2> /dev/null, c: cmd | /dev/null, d: cmd < /dev/null}
+    options: {a: "cmd > /dev/null", b: "cmd 2> /dev/null", c: "cmd | /dev/null", d: "cmd < /dev/null"}
     answer: b
     explanation: 2> /dev/null discards stderr while stdout still reaches the terminal.
