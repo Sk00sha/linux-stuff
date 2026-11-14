@@ -19,3 +19,24 @@ modules:
       - {type: lesson, path: modules/01-shell-1/lessons/05-bash-shell.md, minutes: 15}
       - {type: quiz,   path: modules/01-shell-1/quizzes/05-bash-shell.yaml}
       - {type: lab,    path: modules/01-shell-1/labs/02-bash-prompt}
+
+  - id: 02-linux-core-concepts
+    title: Linux Core Concepts
+    runtime: vm
+    items:
+      - {type: story,  path: modules/02-linux-core-concepts/00-story.md}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/01-bobs-first-team-meeting.md, minutes: 5}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/02-linux-kernel.md, minutes: 15}
+      - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/02-linux-kernel.yaml}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/03-working-with-hardware.md, minutes: 15}
+      - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/03-working-with-hardware.yaml}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/04-linux-boot-sequence.md, minutes: 15}
+      - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/04-linux-boot-sequence.yaml}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/05-runlevels.md, minutes: 10}
+      - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/05-runlevels.yaml}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/06-article-runlevels.md, minutes: 5}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/07-file-types.md, minutes: 15}
+      - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/07-file-types.yaml}
+      - {type: lesson, path: modules/02-linux-core-concepts/lessons/08-filesystem-hierarchy.md, minutes: 10}
+      - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/08-filesystem-hierarchy.yaml}
+      - {type: lab,    path: modules/02-linux-core-concepts/labs/01-kernel-modules-boot-filetypes}

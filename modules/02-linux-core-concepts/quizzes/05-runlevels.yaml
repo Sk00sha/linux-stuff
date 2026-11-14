@@ -1,0 +1,29 @@
+id: 02-linux-core-concepts/05-runlevels
+title: "Quiz: Runlevels and systemd Targets"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which systemd target corresponds to classic runlevel 3?
+    options: {a: rescue.target, b: graphical.target, c: multi-user.target, d: reboot.target}
+    answer: c
+    explanation: Runlevel 3 is the full multi-user text-mode system, multi-user.target. Runlevel 5 adds the GUI (graphical.target).
+  - id: q2
+    prompt: Which command makes the system boot into text mode from the next boot on?
+    options: {a: sudo systemctl isolate multi-user.target, b: sudo systemctl set-default multi-user.target, c: sudo init 3, d: sudo systemctl enable multi-user.target --now}
+    answer: b
+    explanation: set-default changes the default.target symlink used at boot. isolate and init 3 switch the running system but not the default.
+  - id: q3
+    prompt: What does systemctl isolate rescue.target do?
+    options: {a: Schedules rescue mode for the next boot, b: Immediately switches to rescue mode, stopping units it does not need, c: Shows the dependencies of rescue.target, d: Nothing unless you reboot}
+    answer: b
+    explanation: isolate starts the target and stops everything not required by it — over SSH, that includes your network connection.
+  - id: q4
+    prompt: Which command shows the target the system will boot into?
+    options: {a: systemctl get-default, b: runlevel --next, c: cat /etc/inittab, d: uname -t}
+    answer: a
+    explanation: systemctl get-default reads the default.target symlink. /etc/inittab is ignored by systemd.
+  - id: q5
+    prompt: Which runlevel number means reboot?
+    options: {a: 0, b: 1, c: 5, d: 6}
+    answer: d
+    explanation: 0 is power off, 1 is single user (rescue), 5 is graphical and 6 is reboot (reboot.target).

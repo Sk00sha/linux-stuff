@@ -24,5 +24,7 @@ RUN (userdel -r ubuntu 2>/dev/null || true) \
  && updatedb || true
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY course-listen webctl /usr/local/bin/
+COPY umask.sh /etc/profile.d/umask.sh
+RUN sed -i '1i [ "$(id -u)" -ge 1000 ] && umask 0002 || umask 0022' /etc/bash.bashrc 2>/dev/null || true
 LABEL course=linux-basics
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

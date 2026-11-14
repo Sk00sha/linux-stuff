@@ -25,6 +25,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "lib"))
 import miniyaml  # noqa: E402
 
+VM_IN_DOCKER = "--vm-in-docker" in sys.argv
 IMAGES = {"ubuntu": "lbc/ubuntu:1.0", "systemd": "lbc/systemd-ubuntu:1.0", "rocky": "lbc/rocky:1.0"}
 MAX_LINES = 30
 
@@ -70,6 +71,11 @@ def run_lesson(path, update):
     rel = os.path.relpath(path, ROOT)
     if not bash:
         return rel, "no-blocks", []
+    verify_only = False
+    if kind == "vm" and VM_IN_DOCKER:
+        # No VM available: execute the commands in the systemd container to
+        # prove they exist and run, but keep the representative VM output.
+        kind, verify_only = "systemd", True
     if kind not in IMAGES or not image_exists(IMAGES[kind]):
         return rel, "skipped (%s runtime)" % kind, []
     name = "tryit-" + uuid.uuid4().hex[:8]
@@ -91,11 +97,11 @@ def run_lesson(path, update):
             if k != "bash":
                 continue
             code = "\n".join(lines[s + 1:e])
-            if "norun" in info:
+            if "norun" in info or (verify_only and "novmcheck" in info):
                 continue
             r = subprocess.run(["docker", "exec", "-t", "-u", "bob", "-w", "/home/bob", "-e", "HOME=/home/bob",
                                 "-e", "USER=bob", "-e", "TERM=xterm", "-e", "COLUMNS=80", "-e", "LANG=C.UTF-8", name, "bash", "--noprofile", "-c",
-                                "source ~/.bashrc >/dev/null 2>&1; " + code],
+                                "umask 0002; source ~/.bashrc >/dev/null 2>&1; " + code],
                                capture_output=True, text=True, timeout=120)
             out = "\n".join(l.rstrip() for l in (r.stdout + r.stderr).replace("\r\n", "\n").replace("\r", "").split("\n")).strip("\n")
             if r.returncode != 0 and "mayfail" not in info:
@@ -114,18 +120,20 @@ def run_lesson(path, update):
                 replacements.append((j + 1, k2, olines))
     finally:
         subprocess.run(["docker", "rm", "-f", name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    if update and replacements:
+    if update and replacements and not verify_only:
         for a, b, new in sorted(replacements, reverse=True):
             lines[a:b] = new
         with open(path, "w", encoding="utf-8") as fh:
             fh.write("\n".join(lines))
-    return rel, ("FAIL" if failures else "ok"), failures
+    return rel, ("FAIL" if failures else ("ok (verified in container)" if verify_only else "ok")), failures
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("paths", nargs="*", default=[os.path.join(ROOT, "modules")])
     p.add_argument("--update", action="store_true", help="paste real output into ```text blocks")
+    p.add_argument("--vm-in-docker", action="store_true",
+                   help="run tryit: vm lessons in the systemd container (verify only, no update)")
     a = p.parse_args()
     files = []
     for path in a.paths:

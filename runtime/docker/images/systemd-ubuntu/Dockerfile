@@ -26,6 +26,8 @@ RUN (userdel -r ubuntu 2>/dev/null || true) \
  && chmod 440 /etc/sudoers.d/90-bob \
  && install -o bob -g bob -m 644 /dev/null /home/bob/.sudo_as_admin_successful
 COPY course-listen /usr/local/bin/
+COPY umask.sh /etc/profile.d/umask.sh
+RUN sed -i '1i [ "$(id -u)" -ge 1000 ] && umask 0002 || umask 0022' /etc/bash.bashrc 2>/dev/null || true
 LABEL course=linux-basics
 STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init"]

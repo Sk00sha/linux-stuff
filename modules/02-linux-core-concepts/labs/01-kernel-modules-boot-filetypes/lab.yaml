@@ -1,0 +1,19 @@
+id: 02-linux-core-concepts/kernel-modules-boot-filetypes
+title: Get to know bob-vm
+runtime: vm
+services: [bob-vm]
+login: {service: bob-vm, user: bob}
+minutes: 30
+tasks:
+  - id: t1
+    text: Write the release of the running kernel (exactly as printed by uname -r) into /home/bob/kernel.txt.
+  - id: t2
+    text: Load the kernel module dummy now.
+  - id: t3
+    text: Make the dummy module load automatically at every boot via /etc/modules-load.d/dummy.conf.
+  - id: t4
+    text: Make multi-user.target the default boot target.
+  - id: t5
+    text: Create a symbolic link /home/bob/latest-log pointing to the system log (/var/log/syslog on Ubuntu, /var/log/messages on Rocky).
+  - id: t6
+    text: "For each of the five paths listed in /home/bob/filetypes/README, write a line path:type into /home/bob/types.txt (types: regular file, directory, symbolic link, character device, block device, named pipe, socket)."

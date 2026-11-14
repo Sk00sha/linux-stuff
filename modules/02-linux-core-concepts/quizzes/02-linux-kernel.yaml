@@ -1,0 +1,29 @@
+id: 02-linux-core-concepts/02-linux-kernel
+title: "Quiz: The Linux Kernel"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: A program wants to read a file from disk. How does it get the data?
+    options: {a: It talks to the disk controller directly, b: It makes a system call and the kernel reads the data for it, c: It asks systemd, d: It reads /dev/sda byte by byte}
+    answer: b
+    explanation: Only the kernel touches hardware. Programs request work through system calls such as open() and read(); the kernel checks permissions and does the I/O.
+  - id: q2
+    prompt: Which description of the Linux kernel is most accurate?
+    options: {a: A microkernel where every driver runs as a separate user program, b: A monolithic kernel that can load and unload modules at runtime, c: A kernel that must be recompiled to add any driver, d: A user-space program started by GRUB}
+    answer: b
+    explanation: Linux runs drivers in kernel space (monolithic) but most are built as loadable modules, managed with modprobe.
+  - id: q3
+    prompt: uname -r prints 6.8.0-45-generic. What is 8?
+    options: {a: The major version, b: The minor version, c: The distribution build number, d: The number of CPUs}
+    answer: b
+    explanation: The format is major.minor.patch-build-flavour; 6 is major, 8 is minor, 0 the upstream patch level, 45 the distribution build.
+  - id: q4
+    prompt: You loaded a module with sudo modprobe dummy. After a reboot it is gone. What makes it load at every boot?
+    options: {a: Adding the line dummy to a file in /etc/modules-load.d/, b: Running modprobe -r dummy, c: Copying dummy.ko to /boot, d: Adding dummy to /etc/hostname}
+    answer: a
+    explanation: systemd-modules-load reads /etc/modules-load.d/*.conf at boot and loads each listed module name.
+  - id: q5
+    prompt: Why prefer modprobe over insmod?
+    options: {a: modprobe is faster, b: modprobe also loads the modules the requested one depends on, c: insmod only works on Rocky Linux, d: insmod makes the change permanent}
+    answer: b
+    explanation: modprobe resolves dependencies using modules.dep and finds the file by name; insmod needs a path and loads exactly one file.

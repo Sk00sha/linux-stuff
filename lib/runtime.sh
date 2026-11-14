@@ -31,11 +31,12 @@ course_vm_tool() {
 _remote() {
   local svc=$1 user=$2
   if [ "$COURSE_RUNTIME" = docker ]; then
+    # docker exec does not go through PAM, so set the umask a login would get
     if [ "$user" = root ]; then
-      timeout "$COURSE_TIMEOUT" docker exec -i "lbc-$svc" bash -s
+      { echo 'umask 0022'; cat; } | timeout "$COURSE_TIMEOUT" docker exec -i "lbc-$svc" bash -s
     else
-      timeout "$COURSE_TIMEOUT" docker exec -i -u "$user" -w "/home/$user" -e HOME="/home/$user" \
-        -e USER="$user" "lbc-$svc" bash -s
+      { echo 'umask 0002'; cat; } | timeout "$COURSE_TIMEOUT" docker exec -i -u "$user" -w "/home/$user" \
+        -e HOME="/home/$user" -e USER="$user" -e LOGNAME="$user" "lbc-$svc" bash -s
     fi
     return
   fi
@@ -46,6 +47,9 @@ _remote() {
     vagrant)   (cd "$COURSE_ROOT/runtime/vm" && timeout "$COURSE_TIMEOUT" vagrant ssh "$svc" -c "$sudo_cmd" -- -q) ;;
     multipass) timeout "$COURSE_TIMEOUT" multipass exec "$svc" -- bash -c "$sudo_cmd" ;;
     incus)     timeout "$COURSE_TIMEOUT" incus exec "$svc" -- bash -c "$sudo_cmd" ;;
+    # Development/CI only: a systemd container named lbc-<svc> stands in for
+    # the VM. Never use it for labs that touch kernel modules or disks.
+    docker)    timeout "$COURSE_TIMEOUT" docker exec -i "lbc-$svc" bash -c "$sudo_cmd" ;;
     *) echo "No running course VM found (tried vagrant, incus, multipass). Run 'make vm-up'." >&2; return 125 ;;
   esac
 }
