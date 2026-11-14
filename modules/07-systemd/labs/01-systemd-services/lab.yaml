@@ -1,0 +1,23 @@
+id: 07-systemd/systemd-services
+title: Make Project Mercury a real service
+runtime: vm
+services: [bob-vm]
+login: {service: bob-vm, user: bob}
+fallback:
+  runtime: docker
+  services: [systemd]
+  login: {service: systemd, user: bob}
+minutes: 30
+tasks:
+  - id: t1
+    text: Create the unit /etc/systemd/system/project-mercury.service that runs /usr/bin/project-mercury.sh.
+  - id: t2
+    text: The service must run as the user mercury.
+  - id: t3
+    text: If it fails, systemd must restart it after 10 seconds.
+  - id: t4
+    text: It must start after the network (network.target) and after postgresql.service.
+  - id: t5
+    text: It must be enabled at boot and running now.
+  - id: t6
+    text: Prove it — the grader kills the main process and expects systemd to bring it back.

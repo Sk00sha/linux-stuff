@@ -117,3 +117,15 @@ modules:
       - {type: lesson, path: modules/06-security-and-permissions/lessons/09-cronjobs.md, minutes: 15}
       - {type: quiz,   path: modules/06-security-and-permissions/quizzes/09-cronjobs.yaml}
       - {type: lab,    path: modules/06-security-and-permissions/labs/05-cronjob}
+
+  - id: 07-systemd
+    title: Service Management with systemd
+    runtime: vm
+    items:
+      - {type: story,  path: modules/07-systemd/00-story.md}
+      - {type: lesson, path: modules/07-systemd/lessons/01-working-overtime.md, minutes: 5}
+      - {type: lesson, path: modules/07-systemd/lessons/02-creating-a-systemd-service.md, minutes: 20}
+      - {type: quiz,   path: modules/07-systemd/quizzes/02-creating-a-systemd-service.yaml}
+      - {type: lesson, path: modules/07-systemd/lessons/03-systemd-tools.md, minutes: 20}
+      - {type: quiz,   path: modules/07-systemd/quizzes/03-systemd-tools.yaml}
+      - {type: lab,    path: modules/07-systemd/labs/01-systemd-services}

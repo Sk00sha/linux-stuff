@@ -1,0 +1,29 @@
+id: 07-systemd/03-systemd-tools
+title: "Quiz: systemd Tools"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Which command starts a service now and also enables it at boot?
+    options: {a: "systemctl start --boot NAME", b: "systemctl enable --now NAME", c: "systemctl reload NAME", d: "systemctl isolate NAME"}
+    answer: b
+    explanation: enable --now does both. enable alone only affects boot; start alone only now.
+  - id: q2
+    prompt: Which command follows a service's log output live?
+    options: {a: "journalctl -u NAME -f", b: "systemctl log NAME", c: "tail -f /etc/systemd/NAME", d: "journalctl -k NAME"}
+    answer: a
+    explanation: -u selects the unit and -f follows new entries. -k shows kernel messages.
+  - id: q3
+    prompt: How do you change one setting of a package-provided unit without editing its file?
+    options: {a: "Edit /usr/lib/systemd/system/NAME.service", b: "sudo systemctl edit NAME to create a drop-in override", c: "Copy the file to /tmp", d: "systemctl mask NAME"}
+    answer: b
+    explanation: Drop-ins in /etc/systemd/system/NAME.service.d/ survive package updates; systemctl revert removes them.
+  - id: q4
+    prompt: systemctl status shows "Loaded: ...; disabled" and "Active: active (running)". What does that mean?
+    options: {a: "It's running now but won't start at the next boot", b: "It's broken", c: "It will start at boot but isn't running", d: "It's masked"}
+    answer: a
+    explanation: Enabled/disabled is about boot; active/inactive is about now. They're independent.
+  - id: q5
+    prompt: Which command shows the unit file that is actually in effect, including drop-ins?
+    options: {a: "systemctl cat NAME", b: "cat /etc/NAME", c: "journalctl -u NAME", d: "systemctl list-units"}
+    answer: a
+    explanation: systemctl cat prints the main unit file and every drop-in, each with its path.

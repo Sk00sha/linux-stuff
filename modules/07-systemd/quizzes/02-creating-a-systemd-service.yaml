@@ -1,0 +1,29 @@
+id: 07-systemd/02-creating-a-systemd-service
+title: "Quiz: Creating a systemd Service"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Where should you put a unit file you wrote yourself?
+    options: {a: "/usr/lib/systemd/system/", b: "/etc/systemd/system/", c: "/var/lib/systemd/", d: "/home/bob/"}
+    answer: b
+    explanation: /etc/systemd/system is for administrator units and overrides; /usr/lib/systemd/system belongs to packages.
+  - id: q2
+    prompt: Which setting makes a service come back 10 seconds after it crashes?
+    options: {a: "Restart=on-failure and RestartSec=10", b: "After=10s", c: "Type=restart", d: "WantedBy=10"}
+    answer: a
+    explanation: Restart= decides when to restart and RestartSec= how long to wait first.
+  - id: q3
+    prompt: "A unit has After=postgresql.service but nothing else about PostgreSQL. What does that do?"
+    options: {a: "It starts PostgreSQL automatically", b: "If both are started, it orders this unit after PostgreSQL — but doesn't start PostgreSQL", c: "It stops when PostgreSQL stops", d: "It disables PostgreSQL"}
+    answer: b
+    explanation: After= only orders. Add Wants= or Requires= to pull the other unit in.
+  - id: q4
+    prompt: You edited a unit file. What must you run before systemd uses the new version?
+    options: {a: "sudo systemctl daemon-reload", b: "sudo reboot", c: "sudo systemctl reset", d: "sudo journalctl --rotate"}
+    answer: a
+    explanation: daemon-reload makes systemd re-read unit files; then restart the service if it is running.
+  - id: q5
+    prompt: What does WantedBy=multi-user.target in the [Install] section achieve?
+    options: {a: "The service runs only in rescue mode", b: "systemctl enable links the service into multi-user.target so it starts at boot", c: "It makes the service start before the network", d: "It restarts the target"}
+    answer: b
+    explanation: enable creates a symlink in multi-user.target.wants/, so reaching multi-user mode starts the service.

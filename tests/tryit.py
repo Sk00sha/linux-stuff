@@ -111,10 +111,11 @@ def run_lesson(path, update):
             if "norun" in info or (verify_only and "novmcheck" in info):
                 continue
             r = subprocess.run(["docker", "exec", "-t", "-u", "bob", "-w", "/home/bob", "-e", "HOME=/home/bob",
-                                "-e", "USER=bob", "-e", "TERM=xterm", "-e", "COLUMNS=80", "-e", "LANG=C.UTF-8", name, "bash", "--noprofile", "-c",
+                                "-e", "USER=bob", "-e", "TERM=xterm", "-e", "COLUMNS=80", "-e", "SYSTEMD_PAGER=", "-e", "SYSTEMD_COLORS=0", "-e", "PAGER=cat", "-e", "LANG=C.UTF-8", name, "bash", "--noprofile", "-c",
                                 "umask 0002; source ~/.bashrc >/dev/null 2>&1; " + code],
                                capture_output=True, text=True, timeout=120)
-            out = "\n".join(l.rstrip() for l in (r.stdout + r.stderr).replace("\r\n", "\n").replace("\r", "").split("\n")).strip("\n")
+            out = re.sub(r"\x1b\[[0-9;?]*[a-zA-Z]|\x1b[=>]", "", (r.stdout + r.stderr))
+            out = "\n".join(l.rstrip() for l in out.replace("\r\n", "\n").replace("\r", "").split("\n")).strip("\n")
             if r.returncode != 0 and "mayfail" not in info:
                 failures.append("line %d: exit %d\n%s\n---\n%s" % (s + 1, r.returncode, code, out[-800:]))
             # expected output block directly after?
