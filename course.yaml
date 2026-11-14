@@ -40,3 +40,19 @@ modules:
       - {type: lesson, path: modules/02-linux-core-concepts/lessons/08-filesystem-hierarchy.md, minutes: 10}
       - {type: quiz,   path: modules/02-linux-core-concepts/quizzes/08-filesystem-hierarchy.yaml}
       - {type: lab,    path: modules/02-linux-core-concepts/labs/01-kernel-modules-boot-filetypes}
+
+  - id: 03-package-management
+    title: Package Management
+    runtime: docker
+    items:
+      - {type: story,  path: modules/03-package-management/00-story.md}
+      - {type: lesson, path: modules/03-package-management/lessons/01-package-management-introduction.md, minutes: 10}
+      - {type: quiz,   path: modules/03-package-management/quizzes/01-package-management-introduction.yaml}
+      - {type: lesson, path: modules/03-package-management/lessons/02-rpm-and-yum.md, minutes: 20}
+      - {type: quiz,   path: modules/03-package-management/quizzes/02-rpm-and-yum.yaml}
+      - {type: lab,    path: modules/03-package-management/labs/01-yum-and-rpm}
+      - {type: lesson, path: modules/03-package-management/lessons/03-dpkg-and-apt.md, minutes: 20}
+      - {type: quiz,   path: modules/03-package-management/quizzes/03-dpkg-and-apt.yaml}
+      - {type: lesson, path: modules/03-package-management/lessons/04-apt-vs-apt-get.md, minutes: 5}
+      - {type: quiz,   path: modules/03-package-management/quizzes/04-apt-vs-apt-get.yaml}
+      - {type: lab,    path: modules/03-package-management/labs/02-dpkg-and-apt}

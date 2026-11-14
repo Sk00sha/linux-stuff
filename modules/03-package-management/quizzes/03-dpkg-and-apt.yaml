@@ -1,0 +1,29 @@
+id: 03-package-management/03-dpkg-and-apt
+title: "Quiz: DPKG and APT"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: sudo dpkg -i vendor.deb reports missing dependencies. What command completes the installation?
+    options: {a: sudo dpkg -r vendor, b: sudo apt -f install, c: sudo apt update only, d: sudo dpkg -L vendor}
+    answer: b
+    explanation: apt -f install (fix broken) installs the missing dependencies and finishes configuring the half-installed package.
+  - id: q2
+    prompt: Which command lists every file installed by the package tree?
+    options: {a: dpkg -S tree, b: dpkg -L tree, c: apt search tree, d: dpkg -i tree}
+    answer: b
+    explanation: dpkg -L lists a package's files; dpkg -S searches for the package owning a given file.
+  - id: q3
+    prompt: dpkg -l shows "rc" in front of figlet. What does it mean?
+    options: {a: Running and configured, b: Removed, but configuration files remain, c: Recently changed, d: The package is broken}
+    answer: b
+    explanation: The first letter is the desired state (r = remove), the second the actual state (c = config-files only). apt purge removes them.
+  - id: q4
+    prompt: Why should you run sudo apt update before installing software on a real server?
+    options: {a: It upgrades the kernel, b: It refreshes the local copy of the repository indexes so apt knows the latest versions, c: It removes old packages, d: It is required after every reboot}
+    answer: b
+    explanation: apt update only downloads package lists. apt upgrade actually upgrades installed packages.
+  - id: q5
+    prompt: Where are third-party APT repositories usually configured?
+    options: {a: /etc/yum.repos.d/, b: A file in /etc/apt/sources.list.d/, c: /var/cache/apt/archives/, d: /usr/share/apt/}
+    answer: b
+    explanation: Each repository gets its own file in sources.list.d (in .list or deb822 .sources format). The cache holds downloaded .deb files.

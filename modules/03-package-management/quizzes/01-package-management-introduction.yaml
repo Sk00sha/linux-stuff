@@ -1,0 +1,29 @@
+id: 03-package-management/01-package-management-introduction
+title: "Quiz: Package Management Introduction"
+pass_mark: 0.7
+questions:
+  - id: q1
+    prompt: Besides the program's files, what does a package contain that makes clean upgrades and removals possible?
+    options: {a: A copy of the kernel, b: Metadata such as version and dependencies plus install/remove scripts, c: The user's home directory, d: A compiled list of all repositories}
+    answer: b
+    explanation: The metadata (name, version, dependencies) and maintainer scripts let the package manager track, upgrade and remove the package cleanly.
+  - id: q2
+    prompt: What is a repository?
+    options: {a: A server or directory with packages and an index of their metadata, b: The local database of installed files, c: A backup of /etc, d: A type of package file}
+    answer: a
+    explanation: Repositories publish packages plus index files; high-level tools download the index to find packages and dependencies.
+  - id: q3
+    prompt: Which pair uses .rpm packages?
+    options: {a: Ubuntu and Debian, b: Rocky Linux and Fedora, c: Ubuntu and Rocky Linux, d: Alpine and Arch}
+    answer: b
+    explanation: The Red Hat family (RHEL, Rocky, AlmaLinux, Fedora) uses .rpm with rpm/dnf. Debian and Ubuntu use .deb.
+  - id: q4
+    prompt: Why is manually copying a downloaded binary into /usr/bin a bad idea?
+    options: {a: Binaries cannot run from /usr/bin, b: The package manager doesn't know about it, so it isn't updated, tracked or cleanly removable, c: It deletes /usr/bin, d: It only works on Rocky}
+    answer: b
+    explanation: Untracked files miss security updates and may be overwritten or conflict with packaged files.
+  - id: q5
+    prompt: Which file tells you whether a machine belongs to the Debian or Red Hat family?
+    options: {a: /etc/hostname, b: /etc/os-release, c: /etc/fstab, d: /proc/modules}
+    answer: b
+    explanation: /etc/os-release has ID and ID_LIKE fields, e.g. ID=ubuntu and ID_LIKE=debian.

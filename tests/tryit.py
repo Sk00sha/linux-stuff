@@ -110,7 +110,7 @@ def run_lesson(path, update):
             j = e + 1
             while j < len(lines) and lines[j].strip() == "":
                 j += 1
-            if j < len(lines) and lines[j].strip() == "```text":
+            if j < len(lines) and lines[j].strip() == "```text" and "keepoutput" not in info:
                 k2 = j + 1
                 while k2 < len(lines) and not lines[k2].startswith("```"):
                     k2 += 1

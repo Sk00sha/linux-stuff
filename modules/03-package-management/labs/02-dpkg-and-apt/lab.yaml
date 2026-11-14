@@ -1,0 +1,17 @@
+id: 03-package-management/dpkg-and-apt
+title: Install the vendor's notes tool on Ubuntu
+runtime: docker
+services: [ubuntu]
+login: {service: ubuntu, user: bob}
+minutes: 25
+tasks:
+  - id: t1
+    text: Install the vendor package /home/bob/packages/bob-notes_1.0-1_all.deb using dpkg.
+  - id: t2
+    text: The install leaves bob-notes broken because of a missing dependency. Fix it with apt so that bob-notes is fully installed and the bob-notes command works.
+  - id: t3
+    text: Save the list of files installed by the tree package (as printed by dpkg -L) into /home/bob/tree-files.txt.
+  - id: t4
+    text: Write the name of the package that owns /usr/bin/whatis into /home/bob/whatis-owner.txt.
+  - id: t5
+    text: Remove the nano package, but keep vim installed.

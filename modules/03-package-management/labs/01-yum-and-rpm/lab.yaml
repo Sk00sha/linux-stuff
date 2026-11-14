@@ -1,0 +1,17 @@
+id: 03-package-management/yum-and-rpm
+title: Prepare the Rocky reporting server
+runtime: docker
+services: [rocky]
+login: {service: rocky, user: bob}
+minutes: 30
+tasks:
+  - id: t1
+    text: Write the name of the package that owns /usr/bin/wget into /home/bob/wget-owner.txt.
+  - id: t2
+    text: Install the httpd and tree packages.
+  - id: t3
+    text: A security scan flagged telnet. Remove the telnet package.
+  - id: t4
+    text: Create /etc/yum.repos.d/local.repo defining an enabled repository with id local whose baseurl is file:///opt/localrepo (gpgcheck=0).
+  - id: t5
+    text: Install the package bob-tool from the new local repository.
